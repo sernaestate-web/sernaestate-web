@@ -1,0 +1,6 @@
+{
+  "name": "Serna Estate Firma Legal Inmobiliaria",
+  "description": "Firma legal especializada en Derecho Inmobiliario en el Perú. Protegemos tu patrimonio inmobiliario con estrategia y seguridad jurídica.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
