@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Mail, Copy, Check, ArrowUpRight, ShieldCheck, Phone, Send, CheckCircle2, MessageSquare, Linkedin, Instagram, Loader2 } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Mail, Copy, Check, ArrowUpRight, ShieldCheck, Phone, Send, CheckCircle2, MessageSquare, Linkedin, Instagram } from 'lucide-react';
 import { siteContent } from '../config/siteContent';
 import { AnimatedSection } from './animations/AnimatedSection';
 import { Reveal } from './animations/Reveal';
@@ -7,6 +7,7 @@ import { Reveal } from './animations/Reveal';
 export const ContactSection: React.FC = () => {
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
+  const fullNameRef = useRef<HTMLInputElement>(null);
 
   // Form State
   const [formData, setFormData] = useState({
@@ -18,9 +19,14 @@ export const ContactSection: React.FC = () => {
     privacyAccepted: false,
   });
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const [formError, setFormError] = useState('');
+  const [isSubmittedFromUrl, setIsSubmittedFromUrl] = useState(false);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('consulta') === 'enviada') {
+      setIsSubmittedFromUrl(true);
+    }
+  }, []);
 
   const handleCopy = (text: string, type: 'email' | 'phone') => {
     navigator.clipboard.writeText(text);
@@ -34,80 +40,35 @@ export const ContactSection: React.FC = () => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value, type } = e.target;
+    const { id, type } = e.target;
+    const key = id as keyof typeof formData;
+    if (!key) return;
+
     if (type === 'checkbox') {
       const checked = (e.target as HTMLInputElement).checked;
-      setFormData((prev) => ({ ...prev, [name]: checked }));
+      setFormData((prev) => ({ ...prev, [key]: checked }));
     } else {
-      setFormData((prev) => ({ ...prev, [name]: value }));
+      const value = e.target.value;
+      setFormData((prev) => ({ ...prev, [key]: value }));
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setFormError('');
-
-    if (!formData.fullName.trim()) {
-      setFormError('Por favor ingresa tu nombre completo.');
-      return;
-    }
-    if (!formData.email.trim() || !formData.email.includes('@')) {
-      setFormError('Por favor ingresa un correo electrónico válido.');
-      return;
-    }
-    if (!formData.phone.trim()) {
-      setFormError('Por favor ingresa tu número de teléfono / WhatsApp.');
-      return;
-    }
-    if (!formData.privacyAccepted) {
-      setFormError('Debes aceptar la política de privacidad para continuar.');
-      return;
-    }
-
-    setIsSubmitting(true);
-
-    try {
-      const accessKey = import.meta.env.VITE_W3FORMS_ACCESS_KEY;
-
-      const response = await fetch('https://api.w3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify({
-          access_key: accessKey || 'YOUR_W3FORMS_ACCESS_KEY',
-          subject: `Nueva Consulta Inmobiliaria: ${formData.queryType} - ${formData.fullName}`,
-          from_name: 'Serna Estate Web',
-          name: formData.fullName,
-          email: formData.email,
-          phone: formData.phone,
-          tipo_consulta: formData.queryType,
-          message: formData.message || 'Sin mensaje adicional',
-          privacy_accepted: formData.privacyAccepted ? 'Sí' : 'No',
-          botcheck: false,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (data.success) {
-        setFormSubmitted(true);
-      } else {
-        // If w3forms returns error (e.g. key missing/invalid), show helpful message or fall back gracefully
-        if (!accessKey) {
-          // If no key is set in .env, still allow user feedback & fallback success so demo works
-          setFormSubmitted(true);
-        } else {
-          setFormError(data.message || 'Ocurrió un error al enviar el formulario a W3Forms.');
-        }
-      }
-    } catch (error) {
-      // Fallback in case of network issue
-      setFormSubmitted(true);
-    } finally {
-      setIsSubmitting(false);
-    }
+  const handleResetForm = () => {
+    setIsSubmittedFromUrl(false);
+    const url = new URL(window.location.href);
+    url.searchParams.delete('consulta');
+    window.history.replaceState({}, '', url.pathname + url.search + url.hash);
+    setFormData({
+      fullName: '',
+      email: '',
+      phone: '',
+      queryType: siteContent.contact.queryTypes[0],
+      message: '',
+      privacyAccepted: false,
+    });
+    setTimeout(() => {
+      fullNameRef.current?.focus();
+    }, 100);
   };
 
   const whatsappDirectMessage = `*Nueva Consulta Inmobiliaria - Serna Estate*%0A%0A*Nombre:* ${encodeURIComponent(formData.fullName)}%0A*Correo:* ${encodeURIComponent(formData.email)}%0A*Teléfono/WhatsApp:* ${encodeURIComponent(formData.phone)}%0A*Tipo de Consulta:* ${encodeURIComponent(formData.queryType)}%0A*Mensaje:* ${encodeURIComponent(formData.message || 'Sin mensaje adicional')}`;
@@ -167,64 +128,55 @@ export const ContactSection: React.FC = () => {
                 <span>Formulario de Consulta Legal</span>
               </h3>
 
-              {formSubmitted ? (
+              {isSubmittedFromUrl ? (
                 <div className="bg-white rounded-lg border-2 border-[#014937] p-6 sm:p-8 space-y-6 text-left animate-in fade-in duration-300">
-                  <div className="flex items-center gap-3 text-[#014937]">
-                    <CheckCircle2 className="w-8 h-8 text-[#146A55] shrink-0" />
-                    <div>
-                      <h4 className="font-heading font-bold text-lg">¡Consulta enviada con éxito!</h4>
-                      <p className="text-xs font-body text-[#14201C]/80">Hemos recibido tus datos correctamente.</p>
+                  <div className="flex items-start gap-3 text-[#014937]">
+                    <CheckCircle2 className="w-8 h-8 text-[#146A55] shrink-0 mt-0.5" />
+                    <div className="space-y-2">
+                      <h4 className="font-heading font-bold text-xl text-[#014937]">¡Consulta recibida correctamente!</h4>
+                      <p className="text-sm font-body text-[#14201C]/85 leading-relaxed">
+                        También enviamos una confirmación al correo que registraste. Si no la encuentras, revisa tu carpeta de spam o correo no deseado.
+                      </p>
                     </div>
                   </div>
 
-                  <div className="p-4 bg-[#F8FAF9] rounded border border-[#014937]/10 space-y-2 text-xs sm:text-sm font-body">
-                    <p><strong>Cliente:</strong> {formData.fullName}</p>
-                    <p><strong>Correo:</strong> {formData.email}</p>
-                    <p><strong>Teléfono/WhatsApp:</strong> {formData.phone}</p>
-                    <p><strong>Tipo de Consulta:</strong> {formData.queryType}</p>
-                    {formData.message && <p className="italic text-[#14201C]/90 mt-2">"{formData.message}"</p>}
-                  </div>
-
-                  <p className="text-xs font-body text-[#14201C]/80 leading-relaxed">
-                    Para agilizar aún más la atención de tu requerimiento, puedes enviar este resumen directamente por WhatsApp o Correo electrónico:
-                  </p>
-
-                  <div className="flex flex-col sm:flex-row gap-3 pt-2">
-                    <a
-                      href={whatsappUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#25D366] text-white font-heading font-semibold rounded-md hover:bg-[#20ba5a] transition-colors shadow-md text-sm"
+                  <div className="pt-4 border-t border-[#014937]/15 flex flex-col sm:flex-row items-center gap-3">
+                    <button
+                      type="button"
+                      onClick={handleResetForm}
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#014937] text-white font-heading font-bold text-xs uppercase tracking-wider rounded-md hover:bg-[#146A55] transition-all shadow-md cursor-pointer"
                     >
-                      <span>Enviar por WhatsApp</span>
-                      <ArrowUpRight className="w-4 h-4" />
-                    </a>
-
-                    <a
-                      href={mailtoDirectMessage}
-                      className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#014937] text-white font-heading font-semibold rounded-md hover:bg-[#146A55] transition-colors shadow-md text-sm"
-                    >
-                      <span>Enviar por Correo</span>
-                      <Mail className="w-4 h-4 text-[#E0BB5D]" />
-                    </a>
+                      Registrar otra consulta
+                    </button>
                   </div>
-
-                  <button
-                    type="button"
-                    onClick={() => setFormSubmitted(false)}
-                    className="text-xs font-heading text-[#AE7E25] underline hover:text-[#014937] block pt-2 cursor-pointer"
-                  >
-                    Registrar otra consulta
-                  </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  
-                  {formError && (
-                    <div className="p-3.5 rounded bg-red-50 border border-red-200 text-red-700 text-xs font-heading font-medium">
-                      {formError}
-                    </div>
-                  )}
+                <form
+                  action="https://formsubmit.co/sernaestate@gmail.com"
+                  method="POST"
+                  className="space-y-5"
+                >
+                  {/* FormSubmit Configuration Fields */}
+                  <input
+                    type="hidden"
+                    name="_subject"
+                    value="Nueva consulta legal desde la web de Serna Estate"
+                  />
+                  <input
+                    type="hidden"
+                    name="_template"
+                    value="table"
+                  />
+                  <input
+                    type="hidden"
+                    name="_next"
+                    value="https://sernaestate-web.github.io/sernaestate-web/?consulta=enviada#contacto"
+                  />
+                  <input
+                    type="hidden"
+                    name="_autoresponse"
+                    value="Hola. Hemos recibido correctamente tu consulta legal inmobiliaria. El equipo de Serna Estate revisará la información proporcionada y se comunicará contigo por los datos registrados. El envío de este formulario no constituye por sí mismo una relación abogado-cliente ni implica la aceptación automática del caso. Gracias por contactar con Serna Estate Firma Legal Inmobiliaria."
+                  />
 
                   {/* 1. Nombre completo */}
                   <div>
@@ -232,13 +184,15 @@ export const ContactSection: React.FC = () => {
                       1. Nombre completo <span className="text-red-500">*</span>
                     </label>
                     <input
+                      ref={fullNameRef}
                       type="text"
                       id="fullName"
-                      name="fullName"
+                      name="Nombre completo"
                       value={formData.fullName}
                       onChange={handleChange}
                       placeholder="Ej. Juan Pérez Delgado"
                       required
+                      autoComplete="name"
                       className="w-full px-4 py-3 bg-white border border-[#014937]/20 rounded-md text-sm text-[#14201C] focus:outline-none focus:ring-2 focus:ring-[#E0BB5D] focus:border-transparent transition-all"
                     />
                   </div>
@@ -256,6 +210,7 @@ export const ContactSection: React.FC = () => {
                       onChange={handleChange}
                       placeholder="ejemplo@correo.com"
                       required
+                      autoComplete="email"
                       className="w-full px-4 py-3 bg-white border border-[#014937]/20 rounded-md text-sm text-[#14201C] focus:outline-none focus:ring-2 focus:ring-[#E0BB5D] focus:border-transparent transition-all"
                     />
                   </div>
@@ -268,11 +223,12 @@ export const ContactSection: React.FC = () => {
                     <input
                       type="tel"
                       id="phone"
-                      name="phone"
+                      name="Teléfono o WhatsApp"
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="+51 913 511 439"
                       required
+                      autoComplete="tel"
                       className="w-full px-4 py-3 bg-white border border-[#014937]/20 rounded-md text-sm text-[#14201C] focus:outline-none focus:ring-2 focus:ring-[#E0BB5D] focus:border-transparent transition-all"
                     />
                   </div>
@@ -284,9 +240,10 @@ export const ContactSection: React.FC = () => {
                     </label>
                     <select
                       id="queryType"
-                      name="queryType"
+                      name="Tipo de consulta"
                       value={formData.queryType}
                       onChange={handleChange}
+                      required
                       className="w-full px-4 py-3 bg-white border border-[#014937]/20 rounded-md text-sm text-[#14201C] focus:outline-none focus:ring-2 focus:ring-[#E0BB5D] focus:border-transparent transition-all cursor-pointer"
                     >
                       {siteContent.contact.queryTypes.map((q, idx) => (
@@ -304,7 +261,7 @@ export const ContactSection: React.FC = () => {
                     </label>
                     <textarea
                       id="message"
-                      name="message"
+                      name="Mensaje"
                       rows={4}
                       value={formData.message}
                       onChange={handleChange}
@@ -318,7 +275,9 @@ export const ContactSection: React.FC = () => {
                     <label className="flex items-start gap-3 cursor-pointer group">
                       <input
                         type="checkbox"
-                        name="privacyAccepted"
+                        id="privacyAccepted"
+                        name="Aceptación de privacidad"
+                        value="Aceptado"
                         checked={formData.privacyAccepted}
                         onChange={handleChange}
                         required
@@ -334,20 +293,10 @@ export const ContactSection: React.FC = () => {
                   <div className="pt-3">
                     <button
                       type="submit"
-                      disabled={isSubmitting}
-                      className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#014937] text-white font-heading font-bold text-sm uppercase tracking-wider rounded-md hover:bg-[#146A55] disabled:opacity-70 transition-all shadow-md focus:ring-2 focus:ring-[#E0BB5D] cursor-pointer"
+                      className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#014937] text-white font-heading font-bold text-sm uppercase tracking-wider rounded-md hover:bg-[#146A55] transition-all shadow-md focus:ring-2 focus:ring-[#E0BB5D] cursor-pointer"
                     >
-                      {isSubmitting ? (
-                        <>
-                          <Loader2 className="w-4 h-4 text-[#E0BB5D] animate-spin" />
-                          <span>Enviando consulta...</span>
-                        </>
-                      ) : (
-                        <>
-                          <span>Enviar Consulta Legal</span>
-                          <Send className="w-4 h-4 text-[#E0BB5D]" />
-                        </>
-                      )}
+                      <span>Enviar Consulta Legal</span>
+                      <Send className="w-4 h-4 text-[#E0BB5D]" />
                     </button>
                   </div>
 
