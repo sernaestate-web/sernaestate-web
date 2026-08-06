@@ -27,8 +27,12 @@ export const siteContent = {
 
   images: {
     logoMain: {
-      url: "https://res.cloudinary.com/rcjz4y4d/image/upload/f_auto,q_auto/v1785890051/SernaEstate_LogoPrincipal_BackgroundWhite_z0q6bo.png",
-      alt: "Serna Estate Firma Legal Inmobiliaria.",
+      url: "https://res.cloudinary.com/rcjz4y4d/image/upload/f_auto,q_auto/v1785975789/Transparente_LogoHorizontal_bnkqkl.png",
+      alt: "Serna Estate Firma Legal Inmobiliaria S.A.C.",
+    },
+    logoSquare: {
+      url: "https://res.cloudinary.com/rcjz4y4d/image/upload/f_auto,q_auto/v1785975788/TransparenteLogoSquare_ezfguz.png",
+      alt: "Serna Estate Isotipo Inmobiliario",
     },
     logoAlt: {
       url: "https://res.cloudinary.com/rcjz4y4d/image/upload/f_auto,q_auto/v1785890051/SernaEstate_LogoPrincipal_BackgrountTransparente_p4jxym.png",
@@ -38,6 +42,10 @@ export const siteContent = {
       url: "https://res.cloudinary.com/rcjz4y4d/image/upload/f_auto,q_auto/v1785890052/Foto_Karla_3_msvvzj.png",
       alt: "Karla Serna, abogada inmobiliaria y fundadora de Serna Estate.",
     },
+    heroBg: {
+      url: "https://res.cloudinary.com/rcjz4y4d/image/upload/f_auto,q_auto/v1785978860/hf_20260806_010640_d5ff2b05-e66a-4748-ad27-6751aa41d23a_dhzowd.png",
+      alt: "Serna Estate Fondo Institucional",
+    },
     profilePhoto: {
       url: "https://res.cloudinary.com/rcjz4y4d/image/upload/f_auto,q_auto/v1785890065/Foto_Karla_4_vqnfho.png",
       alt: "Karla Serna, fundadora y gerente general de Serna Estate.",
@@ -46,13 +54,12 @@ export const siteContent = {
 
   navigation: [
     { label: "Inicio", href: "#inicio" },
-    { label: "¿Por qué elegirnos?", href: "#por-que-elegirnos" },
+    { label: "Por Qué Elegirnos", href: "#por-que-elegirnos" },
     { label: "Quiénes Somos", href: "#la-firma" },
     { label: "Servicios", href: "#servicios" },
     { label: "Casos de Éxito", href: "#casos" },
     { label: "Blog", href: "#blog" },
     { label: "Nuestro Equipo", href: "#nuestro-equipo" },
-    { label: "Contacto", href: "#contacto" },
   ],
 
   trustPillars: [
@@ -368,24 +375,17 @@ export const siteContent = {
         readTime: "5 min de lectura",
         summary: "Guía paso a paso sobre verificaciones registrales, zonificación, linderos y cargas tributarias para garantizar una compra segura.",
         content: `
-### 1. Estudio de Títulos en la SUNARP (Copia Literal)
-Antes de entregar cualquier monto de dinero o firmar una minuta, es indispensable solicitar una **Copia Literal o Certificado de Litigio y Gravamen (CRI)** actualizada de la partida registral del terreno. Debes verificar:
-- **Titularidad Actual:** Que quien vende figure como propietario único o que todos los copropietarios o cónyuges hayan firmado.
-- **Cargas y Gravámenes:** Comprobar la ausencia de hipotecas, embargos, anotaciones de demanda o usufructos vigentes.
-- **Asientos Registrales:** Verificar la continuidad de las transferencias anteriores (cadena de titulaciones).
+1. Estudio de Títulos en la SUNARP (Copia Literal)
+Antes de entregar cualquier monto de dinero o firmar una minuta, es indispensable solicitar una Copia Literal o Certificado de Litigio y Gravamen (CRI) actualizada de la partida registral del terreno. Debes verificar que quien vende figure como propietario único o que todos los copropietarios o cónyuges hayan firmado; comprobar la ausencia de hipotecas, embargos, anotaciones de demanda o usufructos vigentes; y verificar la continuidad de las transferencias anteriores.
 
-### 2. Situación Físico-Real vs. Situación Registral
-Existe una diferencia frecuente entre los documentos y el terreno en campo:
-- **Linderos y Medidas Perimétricas:** Contrata un levantamiento topográfico o verificación técnica para comprobar que los metros cuadrados reales coincidan con la partida de Sunarp.
-- **Posesores Invasores o Terceros:** Realizar una inspección ocular presencial e inopinada para descartar posesionarios clandestinos o conflictos de colindantes.
+2. Situación Físico-Real vs. Situación Registral
+Existe una diferencia frecuente entre los documentos y el terreno en campo. Es crucial realizar un levantamiento topográfico o verificación técnica para comprobar que los metros cuadrados reales coincidan con la partida de Sunarp, además de hacer una inspección ocular presencial para descartar posesionarios clandestinos o conflictos de colindantes.
 
-### 3. Certificado de Parámetros Urbanísticos y Zonificación (Municipalidad)
-No todos los terrenos permiten construir cualquier tipo de edificación:
-- Revisa el uso de suelo permitido (residencial, comercial, industrial, agrícola).
-- Verifica si el predio se encuentra en zona de riesgo no mitigable, franja marginal de ríos o área de reserva arqueológica (INC/Ministerio de Cultura).
+3. Certificado de Parámetros Urbanísticos y Zonificación
+No todos los terrenos permiten construir cualquier tipo de edificación. Revisa en la municipalidad el uso de suelo permitido (residencial, comercial, industrial, agrícola) y verifica si el predio se encuentra en zona de riesgo no mitigable, franja marginal o área de reserva arqueológica.
 
-### 4. Situación Tributaria Municipal (HR y PU)
-Exige la Constancia de No Adeudo de Arbitrios e Impuesto Predial del ejercicio fiscal en curso, así como la Hoja de Resumen (HR) y Predio Urbano (PU) a nombre del vendedor.
+4. Situación Tributaria Municipal (HR y PU)
+Exige la Constancia de No Adeudo de Arbitrios e Impuesto Predial del ejercicio fiscal en curso, así como la Hoja de Resumen (HR) y Predio Urbano (PU) a nombre del vendedor antes de proceder a la firma notarial.
         `,
       },
       {
@@ -395,20 +395,18 @@ Exige la Constancia de No Adeudo de Arbitrios e Impuesto Predial del ejercicio f
         readTime: "6 min de lectura",
         summary: "Análisis del artículo 1135 del Código Civil peruano, la prioridad registral y los criterios jurisprudenciales sobre la buena fe.",
         content: `
-### El Fenómeno de la Doble Venta en el Perú
+El Fenómeno de la Doble Venta en el Perú
 La doble venta o concurrencia de acreedores ocurre cuando un mismo propietario transfiere el mismo bien inmueble a dos o más compradores distintos mediante contratos separados.
 
-### ¿Qué establece el Artículo 1135 del Código Civil?
+¿Qué establece el Artículo 1135 del Código Civil?
 Cuando varias personas reclaman la propiedad de un mismo inmueble transferido por el mismo vendedor, la ley establece un orden de prelación muy claro:
-1. **Primer Límite - Inscripción Registral y Buena Fe:** Prevalece el comprador que de buena fe inscribió primero su título en los Registros Públicos (SUNARP).
-2. **Segundo Límite - Documento de Fecha Cierta:** Si ninguno inscribió, prevalece el comprador cuyo título conste en documento de fecha cierta más antiguo (por ejemplo, Minuta o Escritura Pública ante Notario).
-3. **Tercer Límite - Título más Antiguo:** En su defecto, se prefiere al comprador cuyo título sea de fecha anterior.
 
-### El Requisito Indispensable: La Buena Fe Registral
-La inscripción por sí sola no protege si el comprador tenía conocimiento de la venta anterior. Para acreditar la buena fe, el adquirente debe haber realizado una verificación previa (estudio de títulos, inspección del inmueble y constatación de la posesión).
+1. Inscripción Registral y Buena Fe: Prevalece el comprador que de buena fe inscribió primero su título en los Registros Públicos (SUNARP).
+2. Documento de Fecha Cierta: Si ninguno inscribió, prevalece el comprador cuyo título conste en documento de fecha cierta más antiguo (por ejemplo, Minuta o Escritura Pública ante Notario).
+3. Título más Antiguo: En su defecto, se prefiere al comprador cuyo título sea de fecha anterior.
 
-### Recomendación Preventiva
-Elevar de inmediato la Minuta a Escritura Pública e inscribir el bloqueo registral o la transferencia sin dilaciones.
+El Requisito Indispensable: La Buena Fe Registral
+La inscripción por sí sola no protege si el comprador tenía conocimiento de la venta anterior. Para acreditar la buena fe, el adquirente debe haber realizado una verificación previa integral con estudio de títulos, inspección del inmueble y constatación de la posesión real.
         `,
       },
       {
@@ -418,18 +416,15 @@ Elevar de inmediato la Minuta a Escritura Pública e inscribir el bloqueo regist
         readTime: "7 min de lectura",
         summary: "Alertas tempranas, suplantación de identidad, poderes falsos y protocolos notariales de validación.",
         content: `
-### Modalidades Más Frecuentes de Fraude Inmobiliario
-Las estafas en el sector inmobiliario han evolucionado hacia esquemas altamente sofisticados. Las modalidades más comunes incluyen:
-- **Suplantación de Identidad:** Delincuentes que utilizan DNI falsificados para hacerse pasar por los verdaderos dueños registrales.
-- **Poderes Falsificados:** Uso de escrituras públicas de otorgamiento de poder supuestamente firmadas en provincias o consulados lejanos.
-- **Venta de Bienes Futuros sin Licencia:** Empresas inmobiliarias de fachada que cobran cuotas iniciales sin contar con terreno propio ni habilitación urbana.
+Modalidades Más Frecuentes de Fraude Inmobiliario
+Las estafas en el sector inmobiliario han evolucionado hacia esquemas altamente sofisticados. Las modalidades más comunes incluyen la suplantación de identidad con DNI falsificados, el uso de poderes falsificados otorgados en notarías distantes, y la venta de bienes futuros sin terreno propio ni habilitación urbana.
 
-### Protocolo de Seguridad en 5 Pasos
-1. **Verificación Biométrica y Notarial:** Validar la identidad de los firmantes mediante lector biométrico conectado a RENIEC.
-2. **Verificación de Poderes en SUNARP:** Confirmar la vigencia del poder y solicitar la comprobación directa en la notaría de origen donde se otorgó el poder.
-3. **Bancarización Obligatoria:** Realizar los pagos mediante Cheque de Gerencia o Transferencia Bancaria Directa a nombre del titular registral, jamás en efectivo ni a cuentas de terceros.
-4. **Inspección Física e Historial de Servicios:** Constatar quién habita el inmueble y verificar recibos de luz y agua a nombre del propietario.
-5. **Asesoría de una Firma Especializada:** Contar con un abogado inmobiliario independiente que no tenga vínculos con la agencia corredora ni la constructora.
+Protocolo de Seguridad en 5 Pasos
+1. Verificación Biométrica y Notarial: Validar la identidad de los firmantes mediante lector biométrico conectado a RENIEC.
+2. Verificación de Poderes en SUNARP: Confirmar la vigencia del poder y solicitar la comprobación directa en la notaría de origen donde se otorgó.
+3. Bancarización Obligatoria: Realizar los pagos mediante Cheque de Gerencia o Transferencia Bancaria Directa a nombre del titular registral.
+4. Inspección Física e Historial de Servicios: Constatar quién habita el inmueble y verificar recibos de luz y agua.
+5. Asesoría de una Firma Especializada: Contar con un abogado inmobiliario independiente que no tenga vínculos con intermediarios.
         `,
       },
       {
@@ -439,19 +434,19 @@ Las estafas en el sector inmobiliario han evolucionado hacia esquemas altamente 
         readTime: "5 min de lectura",
         summary: "Las equivocaciones más costosas durante la separación, minuta, minuta de bien futuro y firmas de escritura.",
         content: `
-### 1. Entregar arras o cuotas de separación sin Due Diligence previo
+1. Entregar arras o cuotas de separación sin Due Diligence previo
 Muchas personas firman contratos de separación con penalidades severas sin haber analizado primero la partida registral ni el estado legal de la propiedad.
 
-### 2. Confiar únicamente en la palabra de la inmobiliaria o corredor
+2. Confiar únicamente en la palabra de la inmobiliaria o corredor
 Los corredores buscan cerrar la venta; su rol no es auditar legalmente el inmueble. La verificación de títulos debe ser realizada por un especialista independiente.
 
-### 3. Ignorar el Reglamento Interno y la Junta de Propietarios
-En departamentos o condominios, no revisar si el edificio tiene junta registrada, si existen deudas de mantenimiento del vendedor o si las normas del reglamento limitan tus planes (mascotas, alquileres temporales tipo Airbnb).
+3. Ignorar el Reglamento Interno y la Junta de Propietarios
+En departamentos o condominios, no revisar si el edificio tiene junta registrada o si existen deudas de mantenimiento del vendedor.
 
-### 4. Modificar o edificar sin Declaratoria de Fábrica
-Comprar casas o aires con pisos construidos sin licencia ni inscripción registral genera problemas de financiamiento bancario e imposibilidad de independización posterior.
+4. Modificar o edificar sin Declaratoria de Fábrica
+Comprar casas o aires con pisos construidos sin licencia ni inscripción registral genera problemas de financiamiento bancario posterior.
 
-### 5. No pactar cláusulas de resolución clara por falta de financiamiento
+5. No pactar cláusulas de resolución clara por falta de financiamiento
 Si el crédito hipotecario es rechazado por el banco y el contrato de compraventa no contempla una cláusula de contingencia, podrías perder las arras entregadas.
         `,
       },
@@ -492,9 +487,9 @@ Si el crédito hipotecario es rechazado por el banco y el contrato de compravent
     ctaWhatsappButton: "Escríbenos por WhatsApp",
     emailSubject: "Consulta Legal Inmobiliaria - Serna Estate",
     socials: {
-      linkedin: { name: "LinkedIn", handle: "Karla Serna", url: "https://www.linkedin.com/search/results/all/?keywords=Karla%20Serna%20Abogada%20Inmobiliaria" },
-      instagram: { name: "Instagram", handle: "Karla Serna", url: "https://www.instagram.com/karlaserna" },
-      tiktok: { name: "TikTok", handle: "Karla Serna", url: "https://www.tiktok.com/@karlaserna" },
+      linkedin: { name: "LinkedIn", handle: "Karla Serna", url: "https://www.linkedin.com/in/karlasernaabogada/" },
+      instagram: { name: "Instagram", handle: "@karlasernaabogada", url: "https://www.instagram.com/karlasernaabogada/" },
+      tiktok: { name: "TikTok", handle: "@karlasernaabogada", url: "https://www.tiktok.com/@karlasernaabogada" },
     },
     queryTypes: [
       "Compraventa de inmueble.",
@@ -528,8 +523,8 @@ Si el crédito hipotecario es rechazado por el banco y el contrato de compravent
   },
 
   footer: {
-    description: "Firma legal especializada en Derecho Inmobiliario S.A.C. Asesoría estratégica para proteger, regularizar, adquirir y defender tu patrimonio en el Perú.",
-    copyright: `© ${new Date().getFullYear()} Serna Estate Firma Legal Inmobiliaria S.A.C. Todos los derechos reservados.`,
-    legalPlaceholdersNote: "Información legal institucional. Los términos definitivos, política de privacidad y aviso legal se publicarás tras su validación oficial.",
+    description: "Firma legal especializada en Derecho Inmobiliario. Asesoría estratégica para proteger, regularizar, adquirir y defender tu patrimonio en el Perú.",
+    copyright: `© ${new Date().getFullYear()} Serna Estate. Todos los derechos reservados.`,
+    legalPlaceholdersNote: "Información legal institucional. Los términos definitivos, política de privacidad y aviso legal se publicarán tras su validación oficial.",
   },
 };

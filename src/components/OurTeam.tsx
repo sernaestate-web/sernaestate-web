@@ -1,110 +1,122 @@
 import React from 'react';
 import { ArrowUpRight, ShieldCheck, Briefcase, Users, Scale, CheckCircle2 } from 'lucide-react';
 import { siteContent, getCloudinarySrcSet, getCloudinaryUrl } from '../config/siteContent';
+import { AnimatedSection } from './animations/AnimatedSection';
+import { Reveal } from './animations/Reveal';
+import { StaggeredCards } from './animations/StaggeredCards';
 
 export const OurTeam: React.FC = () => {
   const profilePhotoUrl = siteContent.images.profilePhoto.url;
   const profileSrcSet = getCloudinarySrcSet(profilePhotoUrl, [480, 768, 1200, 1600]);
 
   return (
-    <section
+    <AnimatedSection
       id="nuestro-equipo"
       className="py-16 md:py-24 bg-white relative overflow-hidden border-b border-[#014937]/10"
-      aria-labelledby="nuestro-equipo-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
         
         {/* Standardized Section Header */}
         <div className="text-left space-y-3">
-          <div className="document-stamp flex items-center gap-2">
-            <Users className="w-3.5 h-3.5 text-[#AE7E25]" aria-hidden="true" />
-            <span>Liderazgo & Equipo Legal</span>
-          </div>
-          <h2
-            id="nuestro-equipo-heading"
-            className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-[#014937]"
-          >
-            Nuestro Equipo
-          </h2>
-          <p className="text-base sm:text-lg font-body text-[#14201C]/80 max-w-3xl">
-            Serna Estate reúne a profesionales con sólido rigor jurídico, especialización constante y el compromiso de brindar seguridad en cada decisión patrimonial.
-          </p>
+          <Reveal direction="up" delay={0.1}>
+            <div className="document-stamp flex items-center gap-2">
+              <Users className="w-3.5 h-3.5 text-[#AE7E25]" aria-hidden="true" />
+              <span>Liderazgo & Equipo Legal</span>
+            </div>
+          </Reveal>
+
+          <Reveal direction="up" delay={0.15}>
+            <h2
+              id="nuestro-equipo-heading"
+              className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-[#014937]"
+            >
+              Nuestro Equipo
+            </h2>
+          </Reveal>
+
+          <Reveal direction="up" delay={0.2}>
+            <p className="text-base sm:text-lg font-body text-[#14201C]/80 max-w-3xl">
+              Serna Estate reúne a profesionales con sólido rigor jurídico, especialización constante y el compromiso de brindar seguridad en cada decisión patrimonial.
+            </p>
+          </Reveal>
         </div>
 
         {/* Founder & Lead Profile Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center bg-[#F8FAF9] p-6 sm:p-10 rounded-2xl border border-[#014937]/15 shadow-sm">
-          
-          {/* Left Column: Photograph */}
-          <div className="lg:col-span-5">
-            <div className="relative bg-white p-3 rounded-xl border border-[#014937]/15 shadow-md">
-              <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg bg-[#F1F5F3]">
-                <img
-                  src={getCloudinaryUrl(profilePhotoUrl, 1200)}
-                  srcSet={profileSrcSet}
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
-                  alt={siteContent.images.profilePhoto.alt}
-                  className="w-full h-full object-cover object-top sm:object-center transition-transform duration-500 hover:scale-[1.01]"
-                  loading="lazy"
-                  width="1200"
-                  height="1600"
-                />
-                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#014937]/80 via-transparent to-transparent pointer-events-none" aria-hidden="true" />
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: Leadership Profile */}
-          <div className="lg:col-span-7 space-y-6">
+        <Reveal direction="up" delay={0.25}>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center bg-[#F8FAF9] p-6 sm:p-10 rounded-2xl border border-[#014937]/15 shadow-sm">
             
-            <div className="space-y-2">
-              <span className="text-xs font-heading font-bold text-[#AE7E25] uppercase tracking-wider bg-[#E0BB5D]/20 px-3 py-1 rounded inline-block">
-                Fundadora & Gerente General
-              </span>
-              <h3 className="text-2xl sm:text-3xl font-heading font-bold text-[#014937]">
-                {siteContent.karlaProfile.name}
-              </h3>
-              <p className="font-heading font-semibold text-base sm:text-lg text-[#AE7E25]">
-                {siteContent.karlaProfile.title} — {siteContent.karlaProfile.roles}
-              </p>
+            {/* Left Column: Photograph */}
+            <div className="lg:col-span-5">
+              <div className="relative bg-white p-3 rounded-xl border border-[#014937]/15 shadow-md">
+                <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg bg-[#F1F5F3]">
+                  <img
+                    src={getCloudinaryUrl(profilePhotoUrl, 1200)}
+                    srcSet={profileSrcSet}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
+                    alt={siteContent.images.profilePhoto.alt}
+                    className="w-full h-full object-cover object-top sm:object-center transition-transform duration-500 hover:scale-[1.01]"
+                    loading="lazy"
+                    width="1200"
+                    height="1600"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#014937]/80 via-transparent to-transparent pointer-events-none" aria-hidden="true" />
+                </div>
+              </div>
             </div>
 
-            {/* Official Bio Paragraph */}
-            <div className="p-5 sm:p-6 rounded-lg bg-white border-l-4 border-[#E0BB5D] border border-[#014937]/10 shadow-xs">
-              <p className="font-body text-sm sm:text-base text-[#14201C] leading-relaxed">
-                {siteContent.karlaProfile.bio}
-              </p>
-            </div>
+            {/* Right Column: Leadership Profile */}
+            <div className="lg:col-span-7 space-y-6">
+              
+              <div className="space-y-2">
+                <span className="text-xs font-heading font-bold text-[#AE7E25] uppercase tracking-wider bg-[#E0BB5D]/20 px-3 py-1 rounded inline-block">
+                  Fundadora & Gerente General
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-heading font-bold text-[#014937]">
+                  {siteContent.karlaProfile.name}
+                </h3>
+                <p className="font-heading font-semibold text-base sm:text-lg text-[#AE7E25]">
+                  {siteContent.karlaProfile.title} — {siteContent.karlaProfile.roles}
+                </p>
+              </div>
 
-            {/* Specialty Focus Highlights */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="p-4 rounded-md bg-white border border-[#014937]/15 flex items-start gap-3">
-                <Briefcase className="w-5 h-5 text-[#014937] shrink-0 mt-0.5" aria-hidden="true" />
-                <div>
-                  <h4 className="font-heading font-semibold text-sm text-[#014937]">
-                    Especialización Legal
-                  </h4>
-                  <p className="font-body text-xs text-[#14201C]/80 mt-0.5">
-                    Derecho Inmobiliario, Derecho Civil y Derecho Procesal Civil.
-                  </p>
+              {/* Official Bio Paragraph */}
+              <div className="p-5 sm:p-6 rounded-lg bg-white border-l-4 border-[#E0BB5D] border border-[#014937]/10 shadow-xs">
+                <p className="font-body text-sm sm:text-base text-[#14201C] leading-relaxed">
+                  {siteContent.karlaProfile.bio}
+                </p>
+              </div>
+
+              {/* Specialty Focus Highlights */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="p-4 rounded-md bg-white border border-[#014937]/15 flex items-start gap-3">
+                  <Briefcase className="w-5 h-5 text-[#014937] shrink-0 mt-0.5" aria-hidden="true" />
+                  <div>
+                    <h4 className="font-heading font-semibold text-sm text-[#014937]">
+                      Especialización Legal
+                    </h4>
+                    <p className="font-body text-xs text-[#14201C]/80 mt-0.5">
+                      Derecho Inmobiliario, Derecho Civil y Derecho Procesal Civil.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-4 rounded-md bg-white border border-[#014937]/15 flex items-start gap-3">
+                  <ShieldCheck className="w-5 h-5 text-[#014937] shrink-0 mt-0.5" aria-hidden="true" />
+                  <div>
+                    <h4 className="font-heading font-semibold text-sm text-[#014937]">
+                      Enfoque Patrimonial
+                    </h4>
+                    <p className="font-body text-xs text-[#14201C]/80 mt-0.5">
+                      Acompañamiento en saneamiento, operaciones inmobiliarias y gestión preventiva.
+                    </p>
+                  </div>
                 </div>
               </div>
 
-              <div className="p-4 rounded-md bg-white border border-[#014937]/15 flex items-start gap-3">
-                <ShieldCheck className="w-5 h-5 text-[#014937] shrink-0 mt-0.5" aria-hidden="true" />
-                <div>
-                  <h4 className="font-heading font-semibold text-sm text-[#014937]">
-                    Enfoque Patrimonial
-                  </h4>
-                  <p className="font-body text-xs text-[#14201C]/80 mt-0.5">
-                    Acompañamiento en saneamiento, operaciones inmobiliarias y gestión preventiva.
-                  </p>
-                </div>
-              </div>
             </div>
 
           </div>
-
-        </div>
+        </Reveal>
 
         {/* Multidisciplinary Team Overview */}
         <div className="p-6 sm:p-8 bg-white rounded-xl border border-[#014937]/15 shadow-sm space-y-6">
@@ -126,7 +138,7 @@ export const OurTeam: React.FC = () => {
             </a>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <StaggeredCards className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" stagger={0.1}>
             <div className="p-4 bg-[#F8FAF9] rounded-lg border border-[#014937]/10 space-y-1.5">
               <div className="flex items-center gap-2 text-[#014937] font-heading font-bold text-sm">
                 <CheckCircle2 className="w-4 h-4 text-[#146A55]" />
@@ -166,10 +178,10 @@ export const OurTeam: React.FC = () => {
                 Verificación de parámetros, independizaciones, rectificaciones de áreas y edificación.
               </p>
             </div>
-          </div>
+          </StaggeredCards>
         </div>
 
       </div>
-    </section>
+    </AnimatedSection>
   );
 };

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
-import { TrustStrip } from './components/TrustStrip';
 import { WhyChooseUs } from './components/WhyChooseUs';
 import { AboutFirm } from './components/AboutFirm';
 import { Services } from './components/Services';
@@ -18,7 +17,6 @@ export default function App() {
       <Header />
       <main id="main-content" className="flex-grow">
         <Hero />
-        <TrustStrip />
         <WhyChooseUs />
         <AboutFirm />
         <Services />

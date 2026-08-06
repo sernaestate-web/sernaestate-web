@@ -1,107 +1,155 @@
 import React from 'react';
-import { Mail, ArrowUpRight, Shield, Phone, Linkedin, Instagram } from 'lucide-react';
+import { Mail, Phone, MapPin, ArrowUpRight, Linkedin, Instagram, ShieldCheck, Globe, Clock } from 'lucide-react';
 import { siteContent } from '../config/siteContent';
 
 export const Footer: React.FC = () => {
-  return (
-    <footer className="bg-[#014937] text-white pt-16 pb-12 relative overflow-hidden border-t-2 border-[#E0BB5D]">
-      {/* Background Cadastral Grid */}
-      <div className="absolute inset-0 cadastral-grid-gold opacity-20 pointer-events-none" aria-hidden="true" />
+  const horizontalLogoUrl = siteContent.images.logoMain?.url || "https://res.cloudinary.com/rcjz4y4d/image/upload/f_auto,q_auto/v1785975789/Transparente_LogoHorizontal_bnkqkl.png";
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12 pb-12 border-b border-white/15">
+  return (
+    <footer className="bg-[#F8FAF9] text-[#14201C] pt-16 sm:pt-20 pb-12 border-t border-[#014937]/15 relative overflow-hidden">
+      {/* Subtle top ambient metallic gold bar */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#014937] via-[#E0BB5D] to-[#014937]" />
+
+      <div className="max-w-[1536px] mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
+        
+        {/* Main 4-Column Grid Layout matching user reference */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-16 border-b border-[#014937]/15">
           
-          {/* Column 1: Brand & Logo */}
-          <div className="md:col-span-6 lg:col-span-5 space-y-5">
+          {/* Column 1: Brand Header with Horizontal Logo & Social Icons */}
+          <div className="lg:col-span-4 space-y-6">
             <a
               href="#inicio"
-              className="inline-block p-2 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#E0BB5D]"
-              aria-label="Serna Estate - Volver al inicio"
+              className="inline-flex flex-col items-start gap-2 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E0BB5D] rounded-xl"
+              aria-label="Serna Estate - Ir al inicio"
             >
-              <img
-                src={siteContent.images.logoMain.url}
-                alt={siteContent.images.logoMain.alt}
-                className="h-10 sm:h-12 w-auto object-contain"
-                loading="lazy"
-              />
+              {/* Transparent Horizontal Logo without Green Background */}
+              <div className="py-1 inline-block">
+                <img
+                  src={horizontalLogoUrl}
+                  alt={siteContent.images.logoMain?.alt || "Serna Estate"}
+                  className="h-12 sm:h-14 w-auto object-contain"
+                  loading="lazy"
+                />
+              </div>
+
+              <div>
+                <span className="text-xl sm:text-2xl font-heading font-black text-[#014937] tracking-tight block">
+                  Serna Estate
+                </span>
+                <span className="text-xs sm:text-sm font-heading font-bold text-[#AE7E25] tracking-wider uppercase block">
+                  Firma Legal Inmobiliaria
+                </span>
+              </div>
             </a>
 
-            <p className="font-heading font-semibold text-sm text-[#E0BB5D]">
-              {siteContent.brand.tagline}
-            </p>
-
-            <p className="font-body text-xs sm:text-sm text-white/80 leading-relaxed max-w-md">
+            <p className="font-body text-xs sm:text-sm text-[#14201C]/80 leading-relaxed max-w-sm">
               {siteContent.footer.description}
             </p>
 
-            <div className="pt-2 space-y-2">
-              <div>
-                <a
-                  href={`https://wa.me/${siteContent.contact.whatsappRaw}?text=${encodeURIComponent('Hola Serna Estate, deseo realizar una consulta legal inmobiliaria.')}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-heading font-medium text-white hover:text-[#25D366] transition-colors"
-                >
-                  <Phone className="w-4 h-4 text-[#25D366]" aria-hidden="true" />
-                  <span>WhatsApp: {siteContent.contact.whatsappDisplay}</span>
-                </a>
-              </div>
-              <div>
-                <a
-                  href={`mailto:${siteContent.contact.email}`}
-                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-heading font-medium text-white hover:text-[#E0BB5D] transition-colors"
-                >
-                  <Mail className="w-4 h-4 text-[#E0BB5D]" aria-hidden="true" />
-                  <span>{siteContent.contact.email}</span>
-                </a>
-              </div>
-              <div className="pt-2 flex items-center gap-3 text-xs text-white/80 font-heading">
-                <span className="text-[#E0BB5D]">Redes:</span>
+            {/* Social Media Row Icons */}
+            <div className="space-y-2 pt-2">
+              <span className="text-xs font-heading font-bold text-[#014937] uppercase tracking-wider block">
+                Síguenos en Redes Sociales
+              </span>
+              <div className="flex items-center gap-3 text-sm text-[#014937]">
                 <a
                   href={siteContent.contact.socials.linkedin.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#E0BB5D] transition-colors flex items-center gap-1"
+                  aria-label="LinkedIn de Karla Serna"
+                  className="w-10 h-10 rounded-xl bg-[#0077B5]/10 hover:bg-[#0077B5] text-[#0077B5] hover:text-white transition-all flex items-center justify-center shadow-xs border border-[#0077B5]/20"
                 >
-                  <Linkedin className="w-3.5 h-3.5 text-[#E0BB5D]" />
-                  <span>LinkedIn</span>
+                  <Linkedin className="w-4.5 h-4.5" />
                 </a>
-                <span>•</span>
+
                 <a
                   href={siteContent.contact.socials.instagram.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#E0BB5D] transition-colors flex items-center gap-1"
+                  aria-label="Instagram de Karla Serna"
+                  className="w-10 h-10 rounded-xl bg-[#E4405F]/10 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] text-[#E4405F] hover:text-white transition-all flex items-center justify-center shadow-xs border border-[#E4405F]/20"
                 >
-                  <Instagram className="w-3.5 h-3.5 text-[#E0BB5D]" />
-                  <span>Instagram</span>
+                  <Instagram className="w-4.5 h-4.5" />
                 </a>
-                <span>•</span>
+
                 <a
                   href={siteContent.contact.socials.tiktok.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#E0BB5D] transition-colors"
+                  aria-label="TikTok de Karla Serna"
+                  className="w-10 h-10 rounded-xl bg-black/10 hover:bg-black text-[#14201C] hover:text-white transition-all flex items-center justify-center shadow-xs border border-black/20"
                 >
-                  <span>TikTok</span>
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.98-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.82.57-1.31 1.56-1.28 2.57.02.94.53 1.83 1.34 2.32.96.58 2.22.56 3.14-.04.81-.53 1.29-1.47 1.28-2.44.02-5.43.01-10.86.02-16.29z" />
+                  </svg>
+                </a>
+
+                <a
+                  href={`https://wa.me/${siteContent.contact.whatsappRaw}?text=${encodeURIComponent('Hola Serna Estate, deseo realizar una consulta legal inmobiliaria.')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Escríbenos por WhatsApp"
+                  className="w-9 h-9 rounded-full bg-[#25D366]/20 hover:bg-[#25D366] hover:text-white text-[#014937] transition-all flex items-center justify-center shadow-xs font-heading font-bold text-xs"
+                >
+                  <Phone className="w-4 h-4" />
                 </a>
               </div>
             </div>
+
           </div>
 
-          {/* Column 2: Internal Anchor Navigation */}
-          <div className="md:col-span-3 lg:col-span-3 space-y-4">
-            <h3 className="font-heading font-bold text-sm text-[#E0BB5D] uppercase tracking-wider">
+          {/* Column 2: Solutions / Servicos */}
+          <div className="lg:col-span-3 space-y-4">
+            <h3 className="font-heading font-bold text-sm sm:text-base text-[#014937] uppercase tracking-wider border-b border-[#014937]/10 pb-2">
+              Áreas de Práctica
+            </h3>
+            <ul className="space-y-2.5 text-xs sm:text-sm font-heading font-medium">
+              <li>
+                <a href="#servicios" className="text-[#14201C]/80 hover:text-[#014937] transition-colors inline-flex items-center gap-1.5 group">
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[#AE7E25] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  <span>Litigios y Defensas Judiciales</span>
+                </a>
+              </li>
+              <li>
+                <a href="#servicios" className="text-[#14201C]/80 hover:text-[#014937] transition-colors inline-flex items-center gap-1.5 group">
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[#AE7E25] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  <span>Compraventa & Due Diligence</span>
+                </a>
+              </li>
+              <li>
+                <a href="#servicios" className="text-[#14201C]/80 hover:text-[#014937] transition-colors inline-flex items-center gap-1.5 group">
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[#AE7E25] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  <span>Saneamiento Físico-Legal & SUNARP</span>
+                </a>
+              </li>
+              <li>
+                <a href="#servicios" className="text-[#14201C]/80 hover:text-[#014937] transition-colors inline-flex items-center gap-1.5 group">
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[#AE7E25] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  <span>Propiedad Horizontal & Juntas</span>
+                </a>
+              </li>
+              <li>
+                <a href="#servicios" className="text-[#14201C]/80 hover:text-[#014937] transition-colors inline-flex items-center gap-1.5 group">
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[#AE7E25] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  <span>Asesoría a Desarrolladores & Fondos</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 3: Navigation / Recursos */}
+          <div className="lg:col-span-2 space-y-4">
+            <h3 className="font-heading font-bold text-sm sm:text-base text-[#014937] uppercase tracking-wider border-b border-[#014937]/10 pb-2">
               Navegación
             </h3>
-            <ul className="space-y-2.5 text-xs sm:text-sm font-heading">
+            <ul className="space-y-2.5 text-xs sm:text-sm font-heading font-medium">
               {siteContent.navigation.map((item) => (
                 <li key={item.href}>
                   <a
                     href={item.href}
-                    className="text-white/85 hover:text-[#E0BB5D] transition-colors inline-flex items-center gap-1.5"
+                    className="text-[#14201C]/80 hover:text-[#014937] transition-colors inline-flex items-center gap-1.5 group"
                   >
-                    <ArrowUpRight className="w-3.5 h-3.5 text-[#E0BB5D]/70" aria-hidden="true" />
+                    <ArrowUpRight className="w-3.5 h-3.5 text-[#AE7E25] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                     <span>{item.label}</span>
                   </a>
                 </li>
@@ -109,36 +157,71 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Column 3: Institutional Notice & Prepared Structure */}
-          <div className="md:col-span-3 lg:col-span-4 space-y-4">
-            <h3 className="font-heading font-bold text-sm text-[#E0BB5D] uppercase tracking-wider">
-              Resguardo Institucional
+          {/* Column 4: Contact / Firma */}
+          <div className="lg:col-span-3 space-y-4">
+            <h3 className="font-heading font-bold text-sm sm:text-base text-[#014937] uppercase tracking-wider border-b border-[#014937]/10 pb-2">
+              Atención Institucional
             </h3>
             
-            <div className="p-4 rounded bg-white/5 border border-white/10 space-y-2 text-xs font-body text-white/80">
-              <div className="flex items-center gap-2 font-heading font-semibold text-[#E0BB5D]">
-                <Shield className="w-4 h-4 text-[#E0BB5D]" aria-hidden="true" />
-                <span>Confidencialidad Profesional</span>
+            <div className="space-y-3 text-xs sm:text-sm font-body text-[#14201C]/85">
+              <div className="flex items-start gap-2.5">
+                <MapPin className="w-4 h-4 text-[#014937] shrink-0 mt-0.5" />
+                <span>Lima, Perú — Cobertura y representación a nivel nacional.</span>
               </div>
-              <p className="leading-relaxed">
-                Toda la orientación jurídica brindada se adecúa a los principios de lealtad, secreto profesional y rigor técnico del Colegio de Abogados del Perú.
-              </p>
+
+              <div className="flex items-center gap-2.5">
+                <Phone className="w-4 h-4 text-[#25D366] shrink-0" />
+                <a
+                  href={`https://wa.me/${siteContent.contact.whatsappRaw}?text=${encodeURIComponent('Hola Serna Estate, deseo realizar una consulta legal inmobiliaria.')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline font-heading font-semibold text-[#014937]"
+                >
+                  {siteContent.contact.whatsappDisplay}
+                </a>
+              </div>
+
+              <div className="flex items-center gap-2.5">
+                <Mail className="w-4 h-4 text-[#AE7E25] shrink-0" />
+                <a
+                  href={`mailto:${siteContent.contact.email}`}
+                  className="hover:underline font-heading font-semibold text-[#014937]"
+                >
+                  {siteContent.contact.email}
+                </a>
+              </div>
+
+              <div className="flex items-start gap-2.5 pt-1 text-xs text-[#14201C]/70">
+                <Clock className="w-4 h-4 text-[#014937] shrink-0 mt-0.5" />
+                <span>Lunes a Viernes: 9:00 AM – 6:00 PM</span>
+              </div>
             </div>
 
-            <p className="text-[11px] font-body text-white/60 leading-normal">
-              {siteContent.footer.legalPlaceholdersNote}
-            </p>
+            {/* Shield Note */}
+            <div className="p-3 rounded-xl bg-white border border-[#014937]/15 shadow-2xs space-y-1">
+              <div className="flex items-center gap-1.5 text-[11px] font-heading font-bold text-[#AE7E25] uppercase tracking-wider">
+                <ShieldCheck className="w-3.5 h-3.5 text-[#014937]" />
+                <span>Garantía de Confidencialidad</span>
+              </div>
+              <p className="text-[11px] font-body text-[#14201C]/75 leading-tight">
+                Toda consulta jurídica está resguardada por el secreto profesional del Abogado.
+              </p>
+            </div>
           </div>
 
         </div>
 
-        {/* Bottom Copyright Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-heading text-white/70 text-center sm:text-left">
+        {/* Bottom Copyright & Legal Notice Bar */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-heading text-[#14201C]/70 text-center sm:text-left">
           <p>{siteContent.footer.copyright}</p>
-          <div className="flex items-center gap-4 text-[11px] text-white/50">
-            <span>Perú — Cobertura Nacional</span>
+
+          <div className="flex flex-wrap items-center justify-center gap-4 text-[11px] font-medium text-[#14201C]/60">
+            <span className="flex items-center gap-1">
+              <Globe className="w-3.5 h-3.5 text-[#014937]" />
+              Atención Presencial & Remota
+            </span>
             <span>•</span>
-            <span>Derecho Inmobiliario</span>
+            <span>Derecho Inmobiliario & Registral Perú</span>
           </div>
         </div>
 

@@ -1,6 +1,9 @@
 import React from 'react';
 import { Building2, Users2, Landmark, AlertCircle, CheckCircle, FileSpreadsheet, Trophy } from 'lucide-react';
 import { siteContent } from '../config/siteContent';
+import { AnimatedSection } from './animations/AnimatedSection';
+import { Reveal } from './animations/Reveal';
+import { StaggeredCards } from './animations/StaggeredCards';
 
 export const RepresentativeCases: React.FC = () => {
   const caseIcons = [
@@ -10,32 +13,39 @@ export const RepresentativeCases: React.FC = () => {
   ];
 
   return (
-    <section
+    <AnimatedSection
       id="casos"
       className="py-16 md:py-24 bg-[#F8FAF9] relative overflow-hidden border-b border-[#014937]/10"
-      aria-labelledby="casos-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Standardized Section Header */}
         <div className="text-left space-y-3 mb-12 md:mb-16">
-          <div className="document-stamp flex items-center gap-2">
-            <Trophy className="w-3.5 h-3.5 text-[#AE7E25]" aria-hidden="true" />
-            <span>Casos de Éxito & Resultados Reales</span>
-          </div>
-          <h2
-            id="casos-heading"
-            className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-[#014937]"
-          >
-            Nuestros Casos de Éxito
-          </h2>
-          <p className="text-base sm:text-lg font-body text-[#14201C]/80 max-w-3xl">
-            Soluciones jurídicas estratégicas y efectivas diseñadas por la firma para proteger el patrimonio, resolver controversias complejas y lograr inscripciones registrales satisfactorias.
-          </p>
+          <Reveal direction="up" delay={0.1}>
+            <div className="document-stamp flex items-center gap-2">
+              <Trophy className="w-3.5 h-3.5 text-[#AE7E25]" aria-hidden="true" />
+              <span>Casos de Éxito & Resultados Reales</span>
+            </div>
+          </Reveal>
+
+          <Reveal direction="up" delay={0.15}>
+            <h2
+              id="casos-heading"
+              className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-[#014937]"
+            >
+              Nuestros Casos de Éxito
+            </h2>
+          </Reveal>
+
+          <Reveal direction="up" delay={0.2}>
+            <p className="text-base sm:text-lg font-body text-[#14201C]/80 max-w-3xl">
+              Soluciones jurídicas estratégicas y efectivas diseñadas por la firma para proteger el patrimonio, resolver controversias complejas y lograr inscripciones registrales satisfactorias.
+            </p>
+          </Reveal>
         </div>
 
         {/* 3 Cases Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+        <StaggeredCards className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12" stagger={0.15}>
           {siteContent.representativeCases.map((caseItem, idx) => (
             <div
               key={caseItem.id}
@@ -99,19 +109,21 @@ export const RepresentativeCases: React.FC = () => {
               </div>
             </div>
           ))}
-        </div>
+        </StaggeredCards>
 
         {/* Mandated Disclaimer */}
-        <div className="p-4 sm:p-5 rounded-lg bg-white border border-[#E0BB5D]/50 shadow-sm text-xs sm:text-sm font-body text-[#14201C]/80 flex items-start gap-3">
-          <span className="font-heading font-bold text-[#AE7E25] uppercase tracking-wider text-xs bg-[#E0BB5D]/20 px-2 py-1 rounded shrink-0">
-            Aviso Legal
-          </span>
-          <p className="leading-relaxed">
-            {siteContent.casesDisclaimer}
-          </p>
-        </div>
+        <Reveal direction="up" delay={0.2}>
+          <div className="p-4 sm:p-5 rounded-lg bg-white border border-[#E0BB5D]/50 shadow-sm text-xs sm:text-sm font-body text-[#14201C]/80 flex items-start gap-3">
+            <span className="font-heading font-bold text-[#AE7E25] uppercase tracking-wider text-xs bg-[#E0BB5D]/20 px-2 py-1 rounded shrink-0">
+              Aviso Legal
+            </span>
+            <p className="leading-relaxed">
+              {siteContent.casesDisclaimer}
+            </p>
+          </div>
+        </Reveal>
 
       </div>
-    </section>
+    </AnimatedSection>
   );
 };

@@ -20,10 +20,10 @@ export const FloatingWhatsApp: React.FC = () => {
         className={`hidden sm:flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#014937] text-white text-xs font-heading font-semibold shadow-xl border border-[#E0BB5D]/40 transition-all duration-300 hover:bg-[#146A55] ${
           isHovered ? 'translate-x-0 opacity-100 scale-100' : 'translate-x-1 opacity-90 scale-95'
         }`}
-        aria-label="Escríbenos por WhatsApp +51 913 511 439"
+        aria-label="Escríbenos por WhatsApp"
       >
         <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
-        <span>WhatsApp: {siteContent.contact.whatsappDisplay}</span>
+        <span>Escríbenos por WhatsApp</span>
       </a>
 
       {/* Floating Button */}
