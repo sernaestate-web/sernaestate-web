@@ -219,12 +219,6 @@ export const Hero: React.FC = () => {
                   height="1600"
                 />
                 
-                {/* Floating Institutional Badge top right */}
-                <div className="absolute top-4 right-4 bg-black/80 backdrop-blur-md border border-[#E0BB5D] rounded-xl px-3.5 py-2 shadow-2xl flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#E0BB5D]" />
-                  <span className="text-[11px] font-heading font-bold text-white uppercase tracking-wider">Firma Colegiada & Registrada</span>
-                </div>
-
                 {/* Gradient vignette at bottom */}
                 <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#01241a] via-[#01241a]/70 to-transparent pointer-events-none" aria-hidden="true" />
                 
