@@ -32,12 +32,12 @@ export default function App() {
   // When returning to home page, reset main title and meta description
   useEffect(() => {
     if (!activeLegalDoc) {
-      document.title = 'Serna Estate | Abogados inmobiliarios en Perú';
+      document.title = 'Serna Estate | Firma Legal Inmobiliaria';
       const metaDesc = document.querySelector('meta[name="description"]');
       if (metaDesc) {
         metaDesc.setAttribute(
           'content',
-          'Asesoría legal inmobiliaria para personas y empresas en Perú. Protege tus operaciones, contratos y decisiones con Serna Estate.'
+          'Seguridad legal para tus decisiones inmobiliarias. Asesoría legal especializada para proteger tus operaciones y proyectos en Perú.'
         );
       }
     }
