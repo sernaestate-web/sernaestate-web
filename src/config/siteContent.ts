@@ -27,7 +27,7 @@ export const siteContent = {
 
   images: {
     logoMain: {
-      url: "https://res.cloudinary.com/rcjz4y4d/image/upload/f_auto,q_auto/v1787062347/SernaEstate_LogoHorizontal_bbidtv.png",
+      url: "https://res.cloudinary.com/rcjz4y4d/image/upload/f_auto,q_auto/v1787067625/LKogoHorizontal_BackLight_v2_wi8bbt.png",
       alt: "Serna Estate Firma Legal Inmobiliaria S.A.C.",
     },
     logoSquare: {
@@ -60,7 +60,6 @@ export const siteContent = {
     { label: "Casos de Éxito", href: "#casos" },
     { label: "Blog", href: "#blog" },
     { label: "Nuestro Equipo", href: "#nuestro-equipo" },
-    { label: "Preguntas", href: "#preguntas-frecuentes" },
   ],
 
   trustPillars: [
