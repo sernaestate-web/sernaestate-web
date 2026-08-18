@@ -92,9 +92,9 @@ export const Header: React.FC = () => {
                 alt={siteContent.images.logoMain.alt}
                 className={`w-auto object-contain transition-all duration-300 ${
                   isScrolled
-                    ? 'h-10 sm:h-12 md:h-13'
-                    : 'h-12 sm:h-14 md:h-16'
-                } group-hover:scale-[1.01]`}
+                    ? 'h-12 sm:h-14 md:h-16'
+                    : 'h-14 sm:h-18 md:h-20'
+                } group-hover:scale-[1.02]`}
                 loading="eager"
               />
             </a>

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { ArrowLeft, Shield, FileText, Lock, Scale, AlertTriangle, ExternalLink, Mail, Phone } from 'lucide-react';
+import { ArrowLeft, Shield, FileText, Lock, Scale, ExternalLink, Mail, Phone } from 'lucide-react';
 import { LegalDocType, legalDocList, legalConfig } from '../../config/legalConfig';
 import { legalDocuments } from '../../config/legalContent';
 import { navigateToHome, navigateToLegal, buildLegalUrl } from '../../utils/legalNavigation';
@@ -12,7 +12,6 @@ interface LegalLayoutProps {
 export const LegalLayout: React.FC<LegalLayoutProps> = ({ currentDocId }) => {
   const doc = legalDocuments[currentDocId];
   const headingRef = useRef<HTMLHeadingElement>(null);
-  const isDevMode = typeof process !== 'undefined' && process.env?.NODE_ENV !== 'production';
 
   // Update document title and meta description dynamically
   useEffect(() => {
@@ -86,7 +85,7 @@ export const LegalLayout: React.FC<LegalLayoutProps> = ({ currentDocId }) => {
             <img
               src={siteContent.images.logoMain.url}
               alt={siteContent.images.logoMain.alt}
-              className="h-9 sm:h-11 w-auto object-contain"
+              className="h-12 sm:h-14 md:h-16 w-auto object-contain transition-transform group-hover:scale-[1.02]"
             />
           </a>
         </div>
@@ -123,25 +122,6 @@ export const LegalLayout: React.FC<LegalLayoutProps> = ({ currentDocId }) => {
               );
             })}
           </nav>
-
-          {/* Development / Review Pending Warning Box */}
-          <aside
-            aria-label="Nota informativa para revisión legal"
-            className="mb-8 p-4 sm:p-5 rounded-xl bg-[#FFFBEB] border border-[#F59E0B]/40 text-[#92400E] shadow-2xs space-y-2"
-          >
-            <div className="flex items-center gap-2 font-heading font-bold text-xs sm:text-sm uppercase tracking-wider">
-              <AlertTriangle className="w-4 h-4 text-[#D97706] shrink-0" />
-              <span>Borrador de Implementación — Sujeto a Validación Legal Humana</span>
-            </div>
-            <p className="text-xs font-body text-[#92400E]/90 leading-relaxed">
-              El presente texto ha sido redactado con estricto apego a los principios de la <strong>Ley N.° 29733</strong> y el <strong>Decreto Supremo N.° 016-2024-JUS</strong>. Se deja constancia de que los siguientes puntos formales se encuentran en proceso de validación previa a su versión definitiva:
-            </p>
-            <ul className="text-xs font-body list-disc pl-5 space-y-1 text-[#92400E]/85">
-              <li>Definición formal de la dirección física o postal de contacto legal (no se publica domicilio privado por seguridad).</li>
-              <li>Finalización del trámite de inscripción del Banco de Datos Personales ante la ANPD (código oficial por incorporar).</li>
-              <li>Fijación del plazo o política interna específica de conservación documental.</li>
-            </ul>
-          </aside>
 
           {/* Layout with TOC Sidebar & Reading Document */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">

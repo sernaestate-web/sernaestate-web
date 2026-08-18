@@ -5,7 +5,7 @@ import { legalConfig, legalDocList } from '../config/legalConfig';
 import { buildLegalUrl, navigateToLegal } from '../utils/legalNavigation';
 
 export const Footer: React.FC = () => {
-  const horizontalLogoUrl = siteContent.images.logoMain?.url || "https://res.cloudinary.com/rcjz4y4d/image/upload/f_auto,q_auto/v1787062347/SernaEstate_LogoHorizontal_bbidtv.png";
+  const footerLogoUrl = "https://res.cloudinary.com/rcjz4y4d/image/upload/f_auto,q_auto/v1787064474/SernaEstate_LogoHorizontal_BkackBackGround_SernaEstateMonochromatyc_d1gu4k.png";
   const currentYear = new Date().getFullYear();
 
   const handleLegalClick = (e: React.MouseEvent<HTMLAnchorElement>, docId: any) => {
@@ -28,15 +28,15 @@ export const Footer: React.FC = () => {
           <div className="lg:col-span-4 space-y-6">
             <a
               href="#inicio"
-              className="inline-block group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E0BB5D] rounded-2xl"
+              className="inline-block group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E0BB5D] rounded-xl transition-all"
               aria-label="Serna Estate - Ir al inicio"
             >
-              {/* Logo container protected on green background */}
-              <div className="bg-white px-4 py-2.5 rounded-2xl inline-block shadow-md border border-[#E0BB5D]/40 group-hover:scale-[1.02] transition-transform">
+              {/* Subtle transparent logo representation on dark green background */}
+              <div className="py-1 inline-block">
                 <img
-                  src={horizontalLogoUrl}
+                  src={footerLogoUrl}
                   alt={siteContent.images.logoMain?.alt || "Serna Estate"}
-                  className="h-11 sm:h-12 w-auto object-contain"
+                  className="h-10 sm:h-12 w-auto object-contain opacity-95 hover:opacity-100 group-hover:scale-[1.02] transition-all"
                   loading="lazy"
                 />
               </div>

@@ -128,9 +128,8 @@ export const Hero: React.FC = () => {
               className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] xl:text-6xl font-heading font-black text-white leading-[1.14] tracking-tight"
             >
               Protegemos el patrimonio inmobiliario con{' '}
-              <span className="relative inline-block text-[#E0BB5D]">
+              <span className="text-[#E0BB5D]">
                 estrategia y seguridad jurídica.
-                <span className="absolute bottom-1 left-0 right-0 h-1.5 bg-[#E0BB5D]/80 rounded-full" />
               </span>
             </h1>
 
