@@ -122,17 +122,16 @@ export const Hero: React.FC = () => {
               <span>{siteContent.brand.name} • FIRMA LEGAL INMOBILIARIA & REGISTRAL</span>
             </div>
 
-            {/* Main Title (H1) with High Authority Phrasing */}
+            {/* Main Title (H1) with Exact Requested Phrasing */}
             <h1
               id="hero-heading"
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] xl:text-6xl font-heading font-black text-white leading-[1.12] tracking-tight"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] xl:text-6xl font-heading font-black text-white leading-[1.14] tracking-tight"
             >
-              Protegemos tu patrimonio inmobiliario con{' '}
+              Protegemos el patrimonio inmobiliario con{' '}
               <span className="relative inline-block text-[#E0BB5D]">
-                máximo rigor
-                <span className="absolute bottom-1 left-0 right-0 h-1 bg-[#E0BB5D]/80 rounded-full" />
-              </span>{' '}
-              y seguridad jurídica.
+                estrategia y seguridad jurídica.
+                <span className="absolute bottom-1 left-0 right-0 h-1.5 bg-[#E0BB5D]/80 rounded-full" />
+              </span>
             </h1>
 
             {/* Support Text */}
@@ -159,34 +158,34 @@ export const Hero: React.FC = () => {
               </a>
             </div>
 
-            {/* Authority Features Cards Integrated Directly in Hero */}
+            {/* Authority Features Cards Integrated Directly in Hero - Textos más grandes y legibles */}
             <div className="pt-8 border-t border-white/20 grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="p-4 rounded-2xl bg-black/40 backdrop-blur-md border border-white/15 space-y-1.5 hover:border-[#E0BB5D]/50 transition-colors">
-                <div className="flex items-center gap-2.5 text-xs sm:text-sm font-heading font-bold text-[#E0BB5D]">
-                  <FileCheck className="w-4 h-4 text-[#E0BB5D] shrink-0" />
+              <div className="p-4 sm:p-5 rounded-2xl bg-black/50 backdrop-blur-md border border-[#E0BB5D]/40 space-y-2 hover:border-[#E0BB5D] transition-all shadow-lg">
+                <div className="flex items-center gap-2.5 text-sm sm:text-base md:text-[17px] font-heading font-extrabold text-[#E0BB5D]">
+                  <FileCheck className="w-5 h-5 text-[#E0BB5D] shrink-0" />
                   <span>Saneamiento SUNARP</span>
                 </div>
-                <p className="text-xs font-body text-white/85 leading-snug">
+                <p className="text-xs sm:text-sm md:text-[14px] font-body text-white/95 leading-relaxed">
                   Titulación, inmatriculación y saneamiento físico-legal registral integral.
                 </p>
               </div>
 
-              <div className="p-4 rounded-2xl bg-black/40 backdrop-blur-md border border-white/15 space-y-1.5 hover:border-[#E0BB5D]/50 transition-colors">
-                <div className="flex items-center gap-2.5 text-xs sm:text-sm font-heading font-bold text-[#E0BB5D]">
-                  <Scale className="w-4 h-4 text-[#E0BB5D] shrink-0" />
+              <div className="p-4 sm:p-5 rounded-2xl bg-black/50 backdrop-blur-md border border-[#E0BB5D]/40 space-y-2 hover:border-[#E0BB5D] transition-all shadow-lg">
+                <div className="flex items-center gap-2.5 text-sm sm:text-base md:text-[17px] font-heading font-extrabold text-[#E0BB5D]">
+                  <Scale className="w-5 h-5 text-[#E0BB5D] shrink-0" />
                   <span>Defensa Judicial</span>
                 </div>
-                <p className="text-xs font-body text-white/85 leading-snug">
+                <p className="text-xs sm:text-sm md:text-[14px] font-body text-white/95 leading-relaxed">
                   Estrategia contenciosa en litigios inmobiliarios y protección patrimonial.
                 </p>
               </div>
 
-              <div className="p-4 rounded-2xl bg-black/40 backdrop-blur-md border border-white/15 space-y-1.5 hover:border-[#E0BB5D]/50 transition-colors">
-                <div className="flex items-center gap-2.5 text-xs sm:text-sm font-heading font-bold text-[#E0BB5D]">
-                  <MapPin className="w-4 h-4 text-[#25D366] shrink-0" />
+              <div className="p-4 sm:p-5 rounded-2xl bg-black/50 backdrop-blur-md border border-[#E0BB5D]/40 space-y-2 hover:border-[#E0BB5D] transition-all shadow-lg">
+                <div className="flex items-center gap-2.5 text-sm sm:text-base md:text-[17px] font-heading font-extrabold text-[#E0BB5D]">
+                  <MapPin className="w-5 h-5 text-[#25D366] shrink-0" />
                   <span>Atención Nacional</span>
                 </div>
-                <p className="text-xs font-body text-white/85 leading-snug">
+                <p className="text-xs sm:text-sm md:text-[14px] font-body text-white/95 leading-relaxed">
                   Cobertura presencial y remota para clientes e inmuebles en todo el Perú.
                 </p>
               </div>

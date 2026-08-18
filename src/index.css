@@ -25,6 +25,11 @@
     font-family: var(--font-heading);
   }
 
+  p {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
   /* Ensure smooth anchor scrolling accounts for sticky header */
   section[id] {
     scroll-margin-top: 5rem;

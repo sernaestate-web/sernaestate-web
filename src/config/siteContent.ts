@@ -20,14 +20,14 @@ export const siteContent = {
     tagline: "Firma legal especializada en Derecho Inmobiliario",
     founder: "Karla Serna",
     founderRole: "Abogada Inmobiliaria, Fundadora y Gerente General",
-    promise: "Protegemos tu patrimonio con estrategia y seguridad jurídica.",
-    headline: "Protegemos tu patrimonio inmobiliario con estrategia y seguridad jurídica.",
+    promise: "Protegemos el patrimonio inmobiliario con estrategia y seguridad jurídica.",
+    headline: "Protegemos el patrimonio inmobiliario con estrategia y seguridad jurídica.",
     supportText: "Asesoría especializada para personas, familias, juntas de propietarios, empresas, constructoras, desarrolladores e inversionistas en todo el Perú.",
   },
 
   images: {
     logoMain: {
-      url: "https://res.cloudinary.com/rcjz4y4d/image/upload/f_auto,q_auto/v1785975789/Transparente_LogoHorizontal_bnkqkl.png",
+      url: "https://res.cloudinary.com/rcjz4y4d/image/upload/f_auto,q_auto/v1787062347/SernaEstate_LogoHorizontal_bbidtv.png",
       alt: "Serna Estate Firma Legal Inmobiliaria S.A.C.",
     },
     logoSquare: {

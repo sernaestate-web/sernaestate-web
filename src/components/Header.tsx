@@ -99,19 +99,18 @@ export const Header: React.FC = () => {
               />
             </a>
 
-            {/* Desktop Navigation Links - Espaciado amplio y tipografía pulida */}
+            {/* Desktop Navigation Links - Con aspecto de botón selector y tipografía más visible */}
             <nav
-              className="hidden lg:flex items-center justify-center gap-1 xl:gap-2.5 flex-1 max-w-4xl"
+              className="hidden lg:flex items-center justify-center gap-1.5 xl:gap-2.5 flex-1 max-w-5xl"
               aria-label="Navegación principal"
             >
               {siteContent.navigation.map((item) => (
                 <a
                   key={item.href}
                   href={item.href}
-                  className="px-2.5 xl:px-3.5 py-2 text-xs xl:text-sm font-heading font-semibold text-[#14201C] hover:text-[#014937] transition-all rounded-lg relative group hover:bg-[#014937]/5 whitespace-nowrap"
+                  className="inline-flex items-center justify-center px-3.5 xl:px-4 py-2 text-sm xl:text-[15px] font-heading font-bold text-[#014937] bg-[#F8FAF9] hover:bg-[#014937] hover:text-white border border-[#014937]/20 hover:border-[#014937] rounded-xl shadow-2xs hover:shadow-md transition-all duration-200 cursor-pointer whitespace-nowrap group active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E0BB5D]"
                 >
-                  {item.label}
-                  <span className="absolute bottom-1 left-3 right-3 h-0.5 bg-[#E0BB5D] scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
+                  <span>{item.label}</span>
                 </a>
               ))}
             </nav>
@@ -191,16 +190,16 @@ export const Header: React.FC = () => {
             </span>
           </div>
 
-          <nav className="flex flex-col space-y-1">
+          <nav className="flex flex-col space-y-2">
             {siteContent.navigation.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
                 onClick={handleNavLinkClick}
-                className="px-4 py-3.5 text-base font-heading font-semibold text-[#14201C] hover:text-[#014937] hover:bg-[#F8FAF9] active:bg-[#F1F5F3] rounded-lg transition-colors border-b border-[#014937]/5 flex items-center justify-between group"
+                className="px-4 py-3 text-base font-heading font-bold text-[#014937] bg-[#F8FAF9] hover:bg-[#014937] hover:text-white rounded-xl transition-all border border-[#014937]/15 flex items-center justify-between group shadow-2xs"
               >
                 <span>{item.label}</span>
-                <ArrowUpRight className="w-4 h-4 text-[#AE7E25] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" aria-hidden="true" />
+                <ArrowUpRight className="w-4 h-4 text-[#AE7E25] group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" aria-hidden="true" />
               </a>
             ))}
           </nav>

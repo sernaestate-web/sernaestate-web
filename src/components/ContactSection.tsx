@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Mail, Copy, Check, ArrowUpRight, ShieldCheck, Phone, Send, CheckCircle2, MessageSquare, Linkedin, Instagram } from 'lucide-react';
+import { Mail, Copy, Check, ArrowUpRight, ShieldCheck, Phone, Send, CheckCircle2, MessageSquare, Linkedin, Instagram, ExternalLink } from 'lucide-react';
 import { siteContent } from '../config/siteContent';
+import { legalConfig } from '../config/legalConfig';
+import { buildLegalUrl } from '../utils/legalNavigation';
 import { AnimatedSection } from './animations/AnimatedSection';
 import { Reveal } from './animations/Reveal';
 
@@ -9,23 +11,26 @@ export const ContactSection: React.FC = () => {
   const [copiedPhone, setCopiedPhone] = useState(false);
   const fullNameRef = useRef<HTMLInputElement>(null);
 
-  // Form State
+  // Form State with Separated Dual Consents
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
     phone: '',
     queryType: siteContent.contact.queryTypes[0],
     message: '',
-    privacyAccepted: false,
+    necessaryConsent: false,
+    marketingConsent: false,
   });
 
   const [isSubmittedFromUrl, setIsSubmittedFromUrl] = useState(false);
+  const [submissionTimestamp, setSubmissionTimestamp] = useState('');
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     if (params.get('consulta') === 'enviada') {
       setIsSubmittedFromUrl(true);
     }
+    setSubmissionTimestamp(new Date().toLocaleString('es-PE', { timeZone: 'America/Lima' }));
   }, []);
 
   const handleCopy = (text: string, type: 'email' | 'phone') => {
@@ -64,12 +69,15 @@ export const ContactSection: React.FC = () => {
       phone: '',
       queryType: siteContent.contact.queryTypes[0],
       message: '',
-      privacyAccepted: false,
+      necessaryConsent: false,
+      marketingConsent: false,
     });
     setTimeout(() => {
       fullNameRef.current?.focus();
     }, 100);
   };
+
+  const privacyUrl = buildLegalUrl('privacidad');
 
   const whatsappDirectMessage = `*Nueva Consulta Inmobiliaria - Serna Estate*%0A%0A*Nombre:* ${encodeURIComponent(formData.fullName)}%0A*Correo:* ${encodeURIComponent(formData.email)}%0A*Teléfono/WhatsApp:* ${encodeURIComponent(formData.phone)}%0A*Tipo de Consulta:* ${encodeURIComponent(formData.queryType)}%0A*Mensaje:* ${encodeURIComponent(formData.message || 'Sin mensaje adicional')}`;
 
@@ -177,6 +185,17 @@ export const ContactSection: React.FC = () => {
                     name="_autoresponse"
                     value="Hola. Hemos recibido correctamente tu consulta legal inmobiliaria. El equipo de Serna Estate revisará la información proporcionada y se comunicará contigo por los datos registrados. El envío de este formulario no constituye por sí mismo una relación abogado-cliente ni implica la aceptación automática del caso. Gracias por contactar con Serna Estate Firma Legal Inmobiliaria."
                   />
+                  {/* Additional Legal Metadata */}
+                  <input
+                    type="hidden"
+                    name="Versión de Política de Privacidad"
+                    value={legalConfig.privacyPolicyVersion}
+                  />
+                  <input
+                    type="hidden"
+                    name="Fecha y hora de envío"
+                    value={submissionTimestamp}
+                  />
 
                   {/* 1. Nombre completo */}
                   <div>
@@ -270,21 +289,67 @@ export const ContactSection: React.FC = () => {
                     />
                   </div>
 
-                  {/* 6. Aceptación de política de privacidad */}
-                  <div className="pt-2">
+                  {/* Legal Notice Box */}
+                  <div className="p-3.5 bg-white rounded-lg border border-[#014937]/15 text-[11px] sm:text-xs text-[#14201C]/80 leading-relaxed space-y-1">
+                    <p>
+                      <strong>{legalConfig.legalName}</strong>, identificada con RUC {legalConfig.ruc}, utilizará tus datos para recibir, evaluar y responder tu consulta. Conoce cómo tratamos tus datos y cómo ejercer tus derechos en nuestra{' '}
+                      <a
+                        href={privacyUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#014937] font-semibold underline hover:text-[#AE7E25] inline-flex items-center gap-0.5"
+                        aria-label="Conoce nuestra Política de Privacidad (se abre en una nueva pestaña)"
+                      >
+                        <span>Política de Privacidad</span>
+                        <ExternalLink className="w-3 h-3 inline" />
+                      </a>.
+                    </p>
+                  </div>
+
+                  {/* Consent A: Necessary Treatment for Managing Inquiry (Obligatorio) */}
+                  <div className="pt-1">
                     <label className="flex items-start gap-3 cursor-pointer group">
                       <input
                         type="checkbox"
-                        id="privacyAccepted"
-                        name="Aceptación de privacidad"
-                        value="Aceptado"
-                        checked={formData.privacyAccepted}
+                        id="necessaryConsent"
+                        name="Tratamiento necesario (gestión de consulta)"
+                        value="Autorizado"
+                        checked={formData.necessaryConsent}
                         onChange={handleChange}
                         required
-                        className="mt-1 h-4 w-4 text-[#014937] border-gray-300 rounded focus:ring-[#E0BB5D]"
+                        className="mt-1 h-4 w-4 text-[#014937] border-gray-300 rounded focus:ring-[#E0BB5D] shrink-0 cursor-pointer"
                       />
-                      <span className="text-xs font-body text-[#14201C]/85 leading-tight group-hover:text-[#014937] transition-colors">
-                        {siteContent.contact.privacyPolicyConsent}
+                      <span className="text-xs font-body text-[#14201C]/90 leading-tight group-hover:text-[#014937] transition-colors">
+                        He leído la{' '}
+                        <a
+                          href={privacyUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline font-semibold text-[#014937] hover:text-[#AE7E25] inline-flex items-center gap-0.5"
+                          aria-label="Abrir Política de Privacidad en una nueva pestaña"
+                        >
+                          <span>Política de Privacidad</span>
+                          <ExternalLink className="w-2.5 h-2.5 inline" />
+                        </a>{' '}
+                        y autorizo el tratamiento de mis datos para gestionar y responder esta consulta. <span className="text-red-500 font-bold">*</span>
+                      </span>
+                    </label>
+                  </div>
+
+                  {/* Consent B: Optional Marketing & News (Opcional) */}
+                  <div className="pt-0.5">
+                    <label className="flex items-start gap-3 cursor-pointer group">
+                      <input
+                        type="checkbox"
+                        id="marketingConsent"
+                        name="Consentimiento publicitario (opcional)"
+                        value="Autorizado para novedades y campañas"
+                        checked={formData.marketingConsent}
+                        onChange={handleChange}
+                        className="mt-1 h-4 w-4 text-[#014937] border-gray-300 rounded focus:ring-[#E0BB5D] shrink-0 cursor-pointer"
+                      />
+                      <span className="text-xs font-body text-[#14201C]/80 leading-tight group-hover:text-[#014937] transition-colors">
+                        Quiero recibir novedades, contenido informativo y comunicaciones sobre los servicios y campañas de Serna Estate. <span className="text-xs text-[#14201C]/60 italic">(Opcional)</span>
                       </span>
                     </label>
                   </div>
@@ -309,10 +374,10 @@ export const ContactSection: React.FC = () => {
           {/* RIGHT COLUMN: Direct Contact Channels & Social Media */}
           <Reveal direction="left" delay={0.3} className="lg:col-span-5 space-y-6">
             
-            {/* WhatsApp Direct Action Box */}
-            <div className="p-6 bg-gradient-to-br from-[#014937] to-[#146A55] text-white rounded-xl shadow-md border-t-4 border-[#E0BB5D] space-y-4">
+            {/* Card 1: WhatsApp Direct Action Box */}
+            <div className="p-6 sm:p-7 bg-gradient-to-br from-[#014937] to-[#146A55] text-white rounded-2xl shadow-lg border-t-4 border-[#E0BB5D] space-y-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 rounded-full bg-white/10 text-[#25D366]">
+                <div className="p-3 rounded-2xl bg-white/10 text-[#25D366]">
                   <Phone className="w-6 h-6" />
                 </div>
                 <div>
@@ -325,16 +390,16 @@ export const ContactSection: React.FC = () => {
                 </div>
               </div>
 
-              <p className="text-xs font-body text-white/80 leading-relaxed">
+              <p className="text-xs font-body text-white/90 leading-relaxed">
                 Contacta directamente con nuestro equipo legal para consultas inmediatas o coordinaciones urgentes.
               </p>
 
-              <div className="flex flex-col sm:flex-row items-center gap-2 pt-1">
+              <div className="flex flex-col sm:flex-row items-center gap-2.5 pt-1">
                 <a
                   href={`https://wa.me/${siteContent.contact.whatsappRaw}?text=${encodeURIComponent('Hola Serna Estate, deseo realizar una consulta legal inmobiliaria.')}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-[#25D366] hover:bg-[#20ba5a] text-white font-heading font-semibold text-xs uppercase tracking-wider rounded transition-colors shadow"
+                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-[#25D366] hover:bg-[#20ba5a] text-white font-heading font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md cursor-pointer"
                 >
                   <span>Chatear por WhatsApp</span>
                   <ArrowUpRight className="w-4 h-4" />
@@ -343,7 +408,7 @@ export const ContactSection: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => handleCopy(siteContent.contact.whatsappDisplay, 'phone')}
-                  className="w-full sm:w-auto px-4 py-3 bg-white/10 hover:bg-white/20 text-white font-heading font-medium text-xs rounded transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                  className="w-full sm:w-auto px-4 py-3.5 bg-white/10 hover:bg-white/20 text-white font-heading font-bold text-xs rounded-xl transition-colors flex items-center justify-center gap-1.5 cursor-pointer border border-white/15"
                 >
                   {copiedPhone ? <Check className="w-4 h-4 text-[#E0BB5D]" /> : <Copy className="w-4 h-4" />}
                   <span>{copiedPhone ? 'Copiado' : 'Copiar'}</span>
@@ -351,66 +416,80 @@ export const ContactSection: React.FC = () => {
               </div>
             </div>
 
-            {/* Email Direct Action Box */}
-            <div className="p-6 bg-[#F8FAF9] rounded-xl border border-[#014937]/20 shadow-sm space-y-4">
+            {/* Card 2: Email Direct Action Box */}
+            <div className="p-6 sm:p-7 bg-gradient-to-br from-[#014937] to-[#146A55] text-white rounded-2xl shadow-lg border-t-4 border-[#E0BB5D] space-y-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 rounded-full bg-[#014937] text-white">
-                  <Mail className="w-6 h-6 text-[#E0BB5D]" />
+                <div className="p-3 rounded-2xl bg-white/10 text-[#E0BB5D]">
+                  <Mail className="w-6 h-6" />
                 </div>
                 <div>
-                  <p className="font-heading font-bold text-xs uppercase tracking-wider text-[#AE7E25]">
+                  <p className="font-heading font-bold text-xs uppercase tracking-wider text-[#E0BB5D]">
                     Correo Electrónico Oficial
                   </p>
-                  <p className="font-heading font-bold text-base text-[#014937] break-all">
+                  <p className="font-heading font-bold text-base sm:text-lg text-white break-all">
                     {siteContent.contact.email}
                   </p>
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row items-center gap-2">
+              <p className="text-xs font-body text-white/90 leading-relaxed">
+                Canal formal para el envío de minutas, documentación registral y solicitudes corporativas.
+              </p>
+
+              <div className="flex flex-col sm:flex-row items-center gap-2.5 pt-1">
                 <a
                   href={`mailto:${siteContent.contact.email}?subject=${encodeURIComponent(siteContent.contact.emailSubject)}`}
-                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-[#014937] hover:bg-[#146A55] text-white font-heading font-semibold text-xs uppercase tracking-wider rounded transition-colors"
+                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-[#E0BB5D] hover:bg-[#ebd07d] text-[#013527] font-heading font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md cursor-pointer border border-[#cfa545]"
                 >
                   <span>Enviar Correo</span>
-                  <ArrowUpRight className="w-4 h-4 text-[#E0BB5D]" />
+                  <ArrowUpRight className="w-4 h-4 text-[#013527]" />
                 </a>
 
                 <button
                   type="button"
                   onClick={() => handleCopy(siteContent.contact.email, 'email')}
-                  className="w-full sm:w-auto px-4 py-3 bg-white hover:bg-[#F1F5F3] border border-[#014937]/20 text-[#014937] font-heading font-medium text-xs rounded transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                  className="w-full sm:w-auto px-4 py-3.5 bg-white/10 hover:bg-white/20 text-white font-heading font-bold text-xs rounded-xl transition-colors flex items-center justify-center gap-1.5 cursor-pointer border border-white/15"
                 >
-                  {copiedEmail ? <Check className="w-4 h-4 text-[#146A55]" /> : <Copy className="w-4 h-4" />}
+                  {copiedEmail ? <Check className="w-4 h-4 text-[#E0BB5D]" /> : <Copy className="w-4 h-4" />}
                   <span>{copiedEmail ? '¡Copiado!' : 'Copiar'}</span>
                 </button>
               </div>
             </div>
 
-            {/* Social Media Networks Box */}
-            <div className="p-6 bg-white rounded-xl border border-[#014937]/20 shadow-sm space-y-4">
-              <h4 className="font-heading font-bold text-xs uppercase tracking-wider text-[#014937]">
-                Redes Oficiales — Karla Serna
-              </h4>
+            {/* Card 3: Social Media Networks Box */}
+            <div className="p-6 sm:p-7 bg-gradient-to-br from-[#014937] to-[#146A55] text-white rounded-2xl shadow-lg border-t-4 border-[#E0BB5D] space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="p-3 rounded-2xl bg-white/10 text-[#E0BB5D]">
+                  <Linkedin className="w-6 h-6" />
+                </div>
+                <div>
+                  <p className="font-heading font-bold text-xs uppercase tracking-wider text-[#E0BB5D]">
+                    Presencia Digital
+                  </p>
+                  <p className="font-heading font-bold text-base sm:text-lg text-white">
+                    Redes Oficiales — Karla Serna
+                  </p>
+                </div>
+              </div>
 
-              <div className="space-y-2.5">
+              <div className="space-y-2.5 pt-1">
                 {/* LinkedIn */}
                 <a
                   href={siteContent.contact.socials.linkedin.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between p-3 rounded-md bg-[#F8FAF9] hover:bg-[#F1F5F3] border border-[#014937]/10 transition-colors group"
+                  className="flex items-center justify-between p-3.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 transition-all group cursor-pointer"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="p-2 rounded bg-[#0077B5] text-white">
+                    <div className="p-2 rounded-lg bg-[#0077B5] text-white shadow-xs">
                       <Linkedin className="w-4 h-4" />
                     </div>
                     <div>
-                      <p className="font-heading font-bold text-xs text-[#014937]">LinkedIn</p>
-                      <p className="font-body text-xs text-[#14201C]/75">{siteContent.contact.socials.linkedin.handle}</p>
+                      <p className="font-heading font-bold text-xs text-white">LinkedIn</p>
+                      <p className="font-body text-xs text-white/80">{siteContent.contact.socials.linkedin.handle}</p>
                     </div>
                   </div>
-                  <ArrowUpRight className="w-4 h-4 text-[#AE7E25] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  <ArrowUpRight className="w-4 h-4 text-[#E0BB5D] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>
 
                 {/* Instagram */}
@@ -418,18 +497,18 @@ export const ContactSection: React.FC = () => {
                   href={siteContent.contact.socials.instagram.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between p-3 rounded-md bg-[#F8FAF9] hover:bg-[#F1F5F3] border border-[#014937]/10 transition-colors group"
+                  className="flex items-center justify-between p-3.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 transition-all group cursor-pointer"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="p-2 rounded bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white">
+                    <div className="p-2 rounded-lg bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white shadow-xs">
                       <Instagram className="w-4 h-4" />
                     </div>
                     <div>
-                      <p className="font-heading font-bold text-xs text-[#014937]">Instagram</p>
-                      <p className="font-body text-xs text-[#14201C]/75">{siteContent.contact.socials.instagram.handle}</p>
+                      <p className="font-heading font-bold text-xs text-white">Instagram</p>
+                      <p className="font-body text-xs text-white/80">{siteContent.contact.socials.instagram.handle}</p>
                     </div>
                   </div>
-                  <ArrowUpRight className="w-4 h-4 text-[#AE7E25] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  <ArrowUpRight className="w-4 h-4 text-[#E0BB5D] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>
 
                 {/* TikTok */}
@@ -437,20 +516,20 @@ export const ContactSection: React.FC = () => {
                   href={siteContent.contact.socials.tiktok.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between p-3 rounded-md bg-[#F8FAF9] hover:bg-[#F1F5F3] border border-[#014937]/10 transition-colors group"
+                  className="flex items-center justify-between p-3.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 transition-all group cursor-pointer"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="p-2 rounded bg-black text-white">
+                    <div className="p-2 rounded-lg bg-black text-white shadow-xs">
                       <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                         <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.98-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.82.57-1.31 1.56-1.28 2.57.02.94.53 1.83 1.34 2.32.96.58 2.22.56 3.14-.04.81-.53 1.29-1.47 1.28-2.44.02-5.43.01-10.86.02-16.29z" />
                       </svg>
                     </div>
                     <div>
-                      <p className="font-heading font-bold text-xs text-[#014937]">TikTok</p>
-                      <p className="font-body text-xs text-[#14201C]/75">{siteContent.contact.socials.tiktok.handle}</p>
+                      <p className="font-heading font-bold text-xs text-white">TikTok</p>
+                      <p className="font-body text-xs text-white/80">{siteContent.contact.socials.tiktok.handle}</p>
                     </div>
                   </div>
-                  <ArrowUpRight className="w-4 h-4 text-[#AE7E25] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  <ArrowUpRight className="w-4 h-4 text-[#E0BB5D] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>
               </div>
             </div>

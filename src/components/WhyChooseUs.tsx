@@ -37,37 +37,40 @@ export const WhyChooseUs: React.FC = () => {
           </Reveal>
         </div>
 
-        {/* 3 Main Reasons Grid with Staggered Entrance */}
+        {/* 3 Main Reasons Grid with Staggered Entrance and Distinctive Colors */}
         <StaggeredCards className="grid grid-cols-1 md:grid-cols-3 gap-8" stagger={0.15}>
           {siteContent.whyUs.reasons.map((reason, idx) => {
             const icons = [
-              <ShieldCheck key="1" className="w-7 h-7 text-[#014937] group-hover:text-white transition-colors" />,
-              <Compass key="2" className="w-7 h-7 text-[#014937] group-hover:text-white transition-colors" />,
-              <UserCheck key="3" className="w-7 h-7 text-[#014937] group-hover:text-white transition-colors" />,
+              <ShieldCheck key="1" className="w-7 h-7 text-[#013527]" />,
+              <Compass key="2" className="w-7 h-7 text-[#013527]" />,
+              <UserCheck key="3" className="w-7 h-7 text-[#013527]" />,
             ];
 
             return (
               <div
                 key={idx}
-                className="bg-white p-8 rounded-xl border-2 border-[#014937]/15 hover:border-[#014937] transition-all shadow-sm hover:shadow-md space-y-4 flex flex-col justify-between group"
+                className="bg-[#014937] text-white p-8 rounded-2xl border-2 border-[#E0BB5D]/70 hover:border-[#E0BB5D] transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1.5 space-y-6 flex flex-col justify-between group relative overflow-hidden"
               >
-                <div className="space-y-4">
-                  <div className="w-14 h-14 rounded-lg bg-[#014937]/10 flex items-center justify-center shrink-0 border border-[#014937]/20 group-hover:bg-[#014937] transition-colors">
+                {/* Subtle decorative background gradient */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#E0BB5D]/10 rounded-bl-full pointer-events-none" />
+
+                <div className="space-y-5 relative z-10">
+                  <div className="w-14 h-14 rounded-2xl bg-[#E0BB5D] flex items-center justify-center shrink-0 shadow-md group-hover:scale-105 transition-transform">
                     {icons[idx]}
                   </div>
 
-                  <h3 className="font-heading font-bold text-lg text-[#014937] leading-snug">
+                  <h3 className="font-heading font-extrabold text-xl text-white leading-snug">
                     {reason.title}
                   </h3>
 
-                  <p className="font-body text-sm text-[#14201C]/85 leading-relaxed">
+                  <p className="font-body text-sm sm:text-base text-white/90 leading-relaxed">
                     {reason.description}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-[#014937]/10 flex items-center gap-2 text-xs font-heading font-bold text-[#AE7E25]">
-                  <span className="w-2 h-2 rounded-full bg-[#E0BB5D]" />
-                  <span>Serna Estate Compromiso Legal</span>
+                <div className="pt-4 border-t border-white/20 flex items-center gap-2 text-xs font-heading font-bold text-[#E0BB5D] relative z-10">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#E0BB5D] shadow-xs" />
+                  <span>Serna Estate • Garantía Institucional</span>
                 </div>
               </div>
             );
