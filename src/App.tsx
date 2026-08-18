@@ -7,6 +7,7 @@ import { Services } from './components/Services';
 import { RepresentativeCases } from './components/RepresentativeCases';
 import { BlogSection } from './components/BlogSection';
 import { OurTeam } from './components/OurTeam';
+import { FaqSection } from './components/FaqSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
@@ -31,12 +32,12 @@ export default function App() {
   // When returning to home page, reset main title and meta description
   useEffect(() => {
     if (!activeLegalDoc) {
-      document.title = 'Serna Estate | Firma Legal Inmobiliaria en el Perú';
+      document.title = 'Abogados inmobiliarios en Perú | Serna Estate';
       const metaDesc = document.querySelector('meta[name="description"]');
       if (metaDesc) {
         metaDesc.setAttribute(
           'content',
-          'Firma legal especializada en Derecho Inmobiliario, Saneamiento de Propiedades y Estudio de Títulos en el Perú. Asesoría estratégica y seguridad jurídica para tu patrimonio.'
+          'Asesoría legal inmobiliaria para personas y empresas en Perú. Protege tus operaciones, contratos y decisiones con Serna Estate.'
         );
       }
     }
@@ -59,6 +60,7 @@ export default function App() {
         <RepresentativeCases />
         <BlogSection />
         <OurTeam />
+        <FaqSection />
         <ContactSection />
       </main>
       <Footer />

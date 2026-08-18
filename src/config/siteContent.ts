@@ -60,6 +60,7 @@ export const siteContent = {
     { label: "Casos de Éxito", href: "#casos" },
     { label: "Blog", href: "#blog" },
     { label: "Nuestro Equipo", href: "#nuestro-equipo" },
+    { label: "Preguntas", href: "#preguntas-frecuentes" },
   ],
 
   trustPillars: [

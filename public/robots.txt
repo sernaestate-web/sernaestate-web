@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sernaestate-web.github.io/sernaestate-web/sitemap.xml

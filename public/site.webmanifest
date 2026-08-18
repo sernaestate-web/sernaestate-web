@@ -1,0 +1,16 @@
+{
+  "name": "Serna Estate",
+  "short_name": "Serna Estate",
+  "description": "Firma legal especializada en Derecho Inmobiliario en el Perú.",
+  "start_url": "/sernaestate-web/",
+  "display": "standalone",
+  "background_color": "#014937",
+  "theme_color": "#014937",
+  "icons": [
+    {
+      "src": "/sernaestate-web/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
