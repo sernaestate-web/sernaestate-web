@@ -32,7 +32,7 @@ export default function App() {
   // When returning to home page, reset main title and meta description
   useEffect(() => {
     if (!activeLegalDoc) {
-      document.title = 'Abogados inmobiliarios en Perú | Serna Estate';
+      document.title = 'Serna Estate | Abogados inmobiliarios en Perú';
       const metaDesc = document.querySelector('meta[name="description"]');
       if (metaDesc) {
         metaDesc.setAttribute(

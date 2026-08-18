@@ -101,14 +101,14 @@ export const Header: React.FC = () => {
             : 'bg-white/90 backdrop-blur-sm border-b border-[#014937]/5 py-3 sm:py-4'
         }`}
       >
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
-          <div className="flex items-center justify-between gap-4 lg:gap-6">
+        <div className="max-w-[1440px] mx-auto px-3 sm:px-6 lg:px-8 xl:px-10">
+          <div className="flex items-center justify-between gap-2 sm:gap-4 lg:gap-6">
             
-            {/* Logo Principal */}
+            {/* Logo Principal con tamaño balanceado en móvil y desktop */}
             <a
               href="#inicio"
               onClick={() => handleNavLinkClick('inicio')}
-              className="flex items-center shrink-0 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E0BB5D] rounded-xl p-1 transition-all"
+              className="flex items-center shrink min-w-0 max-w-[58%] sm:max-w-none group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E0BB5D] rounded-xl p-0.5 sm:p-1 transition-all"
               aria-label="Serna Estate - Ir al inicio"
             >
               <img
@@ -116,8 +116,8 @@ export const Header: React.FC = () => {
                 alt={siteContent.images.logoMain.alt}
                 className={`w-auto object-contain transition-all duration-300 ${
                   isScrolled
-                    ? 'h-11 sm:h-13 md:h-15'
-                    : 'h-13 sm:h-16 md:h-18'
+                    ? 'h-8 sm:h-11 md:h-14 max-h-8 sm:max-h-11 md:max-h-14'
+                    : 'h-9 sm:h-13 md:h-16 max-h-9 sm:max-h-13 md:max-h-16'
                 } group-hover:scale-[1.01]`}
                 loading="eager"
               />
@@ -169,14 +169,14 @@ export const Header: React.FC = () => {
               </a>
             </div>
 
-            {/* Mobile Menu Controls */}
-            <div className="flex lg:hidden items-center gap-2">
+            {/* Mobile Menu Controls - Compactos y 100% visibles sin desbordamiento */}
+            <div className="flex lg:hidden items-center gap-1.5 sm:gap-2 shrink-0">
               <a
                 href="#contacto"
-                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-heading font-semibold text-white bg-[#014937] rounded-full hover:bg-[#146A55] transition-colors shadow-xs border border-[#E0BB5D]/60"
+                className="inline-flex items-center gap-1 px-2.5 sm:px-3.5 py-1.5 text-[11px] sm:text-xs font-heading font-semibold text-white bg-[#014937] rounded-full hover:bg-[#146A55] transition-colors shadow-xs border border-[#E0BB5D]/60 whitespace-nowrap"
               >
                 <span>Contáctanos</span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-[#E0BB5D]" aria-hidden="true" />
+                <ArrowUpRight className="w-3 h-3 text-[#E0BB5D]" aria-hidden="true" />
               </a>
 
               <button
@@ -186,7 +186,7 @@ export const Header: React.FC = () => {
                 aria-expanded={isMobileMenuOpen}
                 aria-controls="mobile-navigation"
                 aria-label={isMobileMenuOpen ? "Cerrar menú de navegación" : "Abrir menú de navegación"}
-                className="p-2 text-[#014937] hover:bg-[#F1F5F3] border border-[#014937]/15 rounded-full focus:outline-none focus:ring-2 focus:ring-[#E0BB5D] min-h-[40px] min-w-[40px] flex items-center justify-center transition-colors"
+                className="p-1.5 sm:p-2 text-[#014937] bg-[#014937]/5 hover:bg-[#014937]/10 active:bg-[#014937]/15 border border-[#014937]/20 rounded-full focus:outline-none focus:ring-2 focus:ring-[#E0BB5D] min-h-[36px] min-w-[36px] sm:min-h-[40px] sm:min-w-[40px] flex items-center justify-center shrink-0 transition-colors"
               >
                 {isMobileMenuOpen ? (
                   <X className="w-5 h-5 text-[#014937]" aria-hidden="true" />

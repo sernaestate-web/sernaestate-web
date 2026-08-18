@@ -8,9 +8,9 @@
   "theme_color": "#014937",
   "icons": [
     {
-      "src": "/sernaestate-web/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml"
+      "src": "https://res.cloudinary.com/rcjz4y4d/image/upload/f_auto,q_auto/v1787069102/sernaestate_favicon_richhz.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
     }
   ]
 }
