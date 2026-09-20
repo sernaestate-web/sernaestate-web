@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sernaestate-web.github.io/sernaestate-web/sitemap.xml
+Sitemap: https://sernaestatefirmalegal.com/sitemap.xml

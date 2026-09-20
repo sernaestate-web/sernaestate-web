@@ -9,7 +9,7 @@
 
     <meta
       name="description"
-      content="Seguridad legal para tus decisiones inmobiliarias. Asesoría legal especializada para proteger tus operaciones y proyectos en Perú."
+      content="Firma legal especializada en Derecho Inmobiliario en el Perú. Asesoría jurídica experta, saneamiento de predios, due diligence y contratos inmobiliarios seguros."
     />
 
     <meta name="author" content="SERNA ESTATE FIRMA LEGAL INMOBILIARIA S.A.C." />
@@ -18,12 +18,13 @@
 
     <link
       rel="canonical"
-      href="https://sernaestate-web.github.io/sernaestate-web/"
+      href="https://sernaestatefirmalegal.com/"
     />
 
-    <!-- Google Fonts: Montserrat & Lato -->
+    <!-- Google Fonts & Resource Preconnects -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
 
     <!-- Open Graph -->
@@ -33,7 +34,7 @@
 
     <meta
       property="og:url"
-      content="https://sernaestate-web.github.io/sernaestate-web/"
+      content="https://sernaestatefirmalegal.com/"
     />
 
     <meta
@@ -43,7 +44,7 @@
 
     <meta
       property="og:description"
-      content="Seguridad legal para tus decisiones inmobiliarias."
+      content="Firma legal especializada en Derecho Inmobiliario en el Perú. Asesoría jurídica experta, saneamiento de predios, due diligence y contratos inmobiliarios seguros."
     />
 
     <meta
@@ -80,7 +81,7 @@
 
     <meta
       name="twitter:description"
-      content="Seguridad legal para tus decisiones inmobiliarias."
+      content="Firma legal especializada en Derecho Inmobiliario en el Perú. Asesoría jurídica experta, saneamiento de predios, due diligence y contratos inmobiliarios seguros."
     />
 
     <meta
@@ -96,39 +97,151 @@
     <!-- Favicon & Web Manifest -->
     <link rel="icon" type="image/jpeg" href="https://res.cloudinary.com/rcjz4y4d/image/upload/f_auto,q_auto/v1787069102/sernaestate_favicon_richhz.jpg" />
     <link rel="apple-touch-icon" href="https://res.cloudinary.com/rcjz4y4d/image/upload/f_auto,q_auto/v1787069102/sernaestate_favicon_richhz.jpg" />
-    <link rel="manifest" href="/sernaestate-web/site.webmanifest" />
+    <link rel="manifest" href="/site.webmanifest" />
 
-    <!-- JSON-LD Structured Data: Organization with verified data -->
+    <!-- JSON-LD Structured Data: Entity Graph (LegalService, Person, WebSite, WebPage, FAQPage) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
-      "@id": "https://sernaestate-web.github.io/sernaestate-web/#organization",
-      "name": "Serna Estate",
-      "legalName": "SERNA ESTATE FIRMA LEGAL INMOBILIARIA S.A.C.",
-      "taxID": "20616191731",
-      "url": "https://sernaestate-web.github.io/sernaestate-web/",
-      "email": "mailto:sernaestate@gmail.com",
-      "description": "Firma legal especializada en asesoría inmobiliaria en Perú.",
-      "logo": "https://res.cloudinary.com/rcjz4y4d/image/upload/f_auto,q_auto/v1789926698/SernaEstate_HorizontalLogoTransparent_sf72fq.png",
-      "image": "https://res.cloudinary.com/rcjz4y4d/image/upload/c_fill,g_center,w_1200,h_630,q_auto:good,f_jpg/v1787067070/SernaEstate_OpenGraph-02_fwkmpj.jpg",
-      "founder": {
-        "@type": "Person",
-        "@id": "https://sernaestate-web.github.io/sernaestate-web/#karla-serna",
-        "name": "Karla Serna",
-        "jobTitle": "Fundadora y Gerente General",
-        "description": "Abogada inmobiliaria especializada en Derecho Inmobiliario, Derecho Civil y Derecho Procesal Civil.",
-        "image": "https://res.cloudinary.com/rcjz4y4d/image/upload/f_auto,q_auto/v1785890065/Foto_Karla_4_vqnfho.png",
-        "sameAs": [
-          "https://www.linkedin.com/in/karlasernaabogada/",
-          "https://www.instagram.com/karlasernaabogada/",
-          "https://www.tiktok.com/@karlasernaabogada"
-        ]
-      },
-      "sameAs": [
-        "https://www.linkedin.com/in/karlasernaabogada/",
-        "https://www.instagram.com/karlasernaabogada/",
-        "https://www.tiktok.com/@karlasernaabogada"
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://sernaestatefirmalegal.com/#website",
+          "url": "https://sernaestatefirmalegal.com/",
+          "name": "Serna Estate | Firma Legal Inmobiliaria",
+          "description": "Firma legal especializada en Derecho Inmobiliario en el Perú.",
+          "inLanguage": "es-PE",
+          "publisher": {
+            "@id": "https://sernaestatefirmalegal.com/#organization"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://sernaestatefirmalegal.com/#webpage",
+          "url": "https://sernaestatefirmalegal.com/",
+          "name": "Serna Estate | Firma Legal Inmobiliaria",
+          "isPartOf": {
+            "@id": "https://sernaestatefirmalegal.com/#website"
+          },
+          "about": {
+            "@id": "https://sernaestatefirmalegal.com/#organization"
+          },
+          "description": "Firma legal especializada en Derecho Inmobiliario en el Perú. Asesoría jurídica experta, saneamiento de predios, due diligence y contratos inmobiliarios seguros.",
+          "inLanguage": "es-PE"
+        },
+        {
+          "@type": ["LegalService", "Organization"],
+          "@id": "https://sernaestatefirmalegal.com/#organization",
+          "name": "Serna Estate",
+          "legalName": "SERNA ESTATE FIRMA LEGAL INMOBILIARIA S.A.C.",
+          "taxID": "20616191731",
+          "url": "https://sernaestatefirmalegal.com/",
+          "email": "mailto:sernaestate@gmail.com",
+          "telephone": "+51913511439",
+          "description": "Firma legal especializada exclusivamente en Derecho Inmobiliario, saneamiento físico-legal, litigios patrimoniales y estructuración de operaciones sobre bienes inmuebles en el Perú.",
+          "logo": "https://res.cloudinary.com/rcjz4y4d/image/upload/f_auto,q_auto/v1789926698/SernaEstate_HorizontalLogoTransparent_sf72fq.png",
+          "image": "https://res.cloudinary.com/rcjz4y4d/image/upload/c_fill,g_center,w_1200,h_630,q_auto:good,f_jpg/v1787067070/SernaEstate_OpenGraph-02_fwkmpj.jpg",
+          "areaServed": {
+            "@type": "Country",
+            "name": "Perú"
+          },
+          "founder": {
+            "@id": "https://sernaestatefirmalegal.com/#karla-serna"
+          },
+          "knowsAbout": [
+            "Derecho Inmobiliario",
+            "Saneamiento físico-legal de predios",
+            "Due Diligence inmobiliario y estudio de títulos",
+            "Contratos de compraventa inmobiliaria",
+            "Prescripción adquisitiva de dominio",
+            "Desalojo y reivindicación",
+            "Independización y habilitación urbana",
+            "Juntas de propietarios y reglamentos internos"
+          ],
+          "sameAs": [
+            "https://www.linkedin.com/in/karlasernaabogada/",
+            "https://www.instagram.com/karlasernaabogada/",
+            "https://www.tiktok.com/@karlasernaabogada"
+          ]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://sernaestatefirmalegal.com/#karla-serna",
+          "name": "Karla Serna",
+          "jobTitle": "Fundadora y Gerente General",
+          "description": "Abogada inmobiliaria colegiada especializada en Derecho Inmobiliario, Derecho Civil y Derecho Procesal Civil en el Perú.",
+          "image": "https://res.cloudinary.com/rcjz4y4d/image/upload/f_auto,q_auto/v1785890065/Foto_Karla_4_vqnfho.png",
+          "worksFor": {
+            "@id": "https://sernaestatefirmalegal.com/#organization"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/karlasernaabogada/",
+            "https://www.instagram.com/karlasernaabogada/",
+            "https://www.tiktok.com/@karlasernaabogada"
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://sernaestatefirmalegal.com/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "¿Qué es Serna Estate y cuál es su especialidad?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Serna Estate Firma Legal Inmobiliaria S.A.C. es una firma jurídica peruana especializada exclusivamente en Derecho Inmobiliario, saneamiento físico-legal, litigios patrimoniales y estructuración de operaciones sobre bienes inmuebles. Liderada por la abogada Karla Serna, la firma integra conocimientos jurídicos, notariales, registrales y judiciales para brindar acompañamiento preventivo y contencioso en todo el ciclo de vida de un inmueble en el Perú."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Qué servicios atiende una firma legal inmobiliaria?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Brinda asesoría y defensa técnica en la adquisición, saneamiento, regularización y protección de inmuebles. Comprende el estudio de títulos (Due Diligence), redacción de contratos, independizaciones, declaratorias de fábrica y defensas judiciales. A diferencia de una agencia comercial o de corretaje, una firma legal audita la validez de los títulos, identifica contingencias ocultas en SUNARP o municipios y diseña estrategias que evitan fraudes o nulidades."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿A quiénes asesora Serna Estate?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Asesoramos a personas naturales, familias, copropietarios, juntas de propietarios de edificios y condominios, empresas, constructoras, desarrolladores inmobiliarios e inversionistas patrimoniales en todo el territorio del Perú. La atención se brinda tanto de forma presencial en Lima como a través de canales digitales para clientes con operaciones e inmuebles en diversas regiones del país."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Qué problemas o controversias inmobiliarias atiende la firma?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Atendemos procesos de prescripción adquisitiva de dominio, desalojo, reivindicación, mejor derecho de propiedad, nulidad de acto jurídico, rectificación de áreas y linderos, levantamiento de hipotecas, acumulación e independización de predios. También estructuramos reglamentos internos y formalización de juntas directivas para edificios residenciales o complejos comerciales que requieren orden legal y convivencia regulada."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Cómo solicitar una consulta o evaluación preliminar?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Puedes comunicarte a través del formulario de contacto en esta web, por correo electrónico a sernaestate@gmail.com o vía WhatsApp al +51 913 511 439 detallando brevemente tu situación y el tipo de inmueble involucrado. Un miembro del equipo revisará la información inicial para coordinar una primera sesión de evaluación y orientar sobre la viabilidad y los pasos legales correspondientes."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Enviar una consulta genera automáticamente una relación abogado-cliente?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. El envío de una consulta a través del formulario web o WhatsApp constituye una solicitud de orientación preliminar y no establece por sí misma una relación profesional formal ni la aceptación automática del patrocinio legal. La representación jurídica formal se establece únicamente tras la revisión de documentos, la emisión de una propuesta de servicios aceptada expresamente y la suscripción del respectivo acuerdo de honorarios."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Qué información conviene preparar antes de una consulta inmobiliaria?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Es recomendable contar con la Copia Literal o CRI (Certificado Registral Inmobiliario) emitida por la SUNARP, copia simple de contratos o minutas previas, hojas de autovalúo municipal (HR y PU) y un resumen cronológico de los hechos. Contar con estos antecedentes permite a nuestros abogados evaluar con precisión la situación registral, detectar riesgos reales y proponer una ruta legal técnica y viable desde el primer contacto."
+              }
+            }
+          ]
+        }
       ]
     }
     </script>

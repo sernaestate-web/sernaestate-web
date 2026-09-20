@@ -37,7 +37,7 @@ export default function App() {
       if (metaDesc) {
         metaDesc.setAttribute(
           'content',
-          'Seguridad legal para tus decisiones inmobiliarias. Asesoría legal especializada para proteger tus operaciones y proyectos en Perú.'
+          'Firma legal especializada en Derecho Inmobiliario en el Perú. Asesoría jurídica experta, saneamiento de predios, due diligence y contratos inmobiliarios seguros.'
         );
       }
     }

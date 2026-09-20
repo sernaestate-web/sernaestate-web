@@ -189,7 +189,7 @@ export const ContactSection: React.FC = () => {
                   <input
                     type="hidden"
                     name="_next"
-                    value="https://sernaestate-web.github.io/sernaestate-web/?consulta=enviada#contacto"
+                    value="https://sernaestatefirmalegal.com/?consulta=enviada#contacto"
                   />
                   <input
                     type="hidden"
