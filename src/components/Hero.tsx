@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { ArrowUpRight, ChevronRight, ShieldCheck, Scale, FileCheck, Award, CheckCircle2, MapPin } from 'lucide-react';
+import { ArrowUpRight, ChevronRight, Scale, FileCheck, Award, MapPin } from 'lucide-react';
 import { siteContent, getCloudinarySrcSet, getCloudinaryUrl } from '../config/siteContent';
 import { CadastralLinderoSvg } from './CadastralLinderoSvg';
 import { gsap, isReducedMotion, isMobileScreen } from '../lib/gsap';
@@ -116,13 +116,7 @@ export const Hero: React.FC = () => {
           {/* Left Column: Headlines, High-Ticket Value Proposition & Authority Credentials */}
           <div ref={leftColRef} className="lg:col-span-7 space-y-7 sm:space-y-9 text-left">
             
-            {/* High-Authority Document Tag Stamp */}
-            <div className="inline-flex items-center gap-3 px-4 py-2.5 rounded-xl bg-black/60 backdrop-blur-md border border-[#E0BB5D]/70 text-xs sm:text-sm font-heading font-bold text-[#E0BB5D] uppercase tracking-widest shadow-2xl">
-              <ShieldCheck className="w-4 h-4 text-[#E0BB5D] shrink-0" aria-hidden="true" />
-              <span>{siteContent.brand.name} • FIRMA LEGAL INMOBILIARIA & REGISTRAL</span>
-            </div>
-
-            {/* Main Title (H1) with Exact Requested Phrasing */}
+            {/* Main Title (H1) */}
             <h1
               id="hero-heading"
               className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] xl:text-6xl font-heading font-black text-white leading-[1.14] tracking-tight"

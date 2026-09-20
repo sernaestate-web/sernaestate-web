@@ -128,16 +128,27 @@ export const ContactSection: React.FC = () => {
           
           {/* LEFT COLUMN: Contact Form */}
           <Reveal direction="right" delay={0.25} className="lg:col-span-7">
-            <div className="bg-[#F8FAF9] rounded-xl border border-[#014937]/20 p-6 sm:p-8 md:p-10 shadow-lg relative">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-[#E0BB5D]/10 rounded-bl-full pointer-events-none" />
+            <div className="bg-gradient-to-br from-[#F5DC96] via-[#E0BB5D] to-[#C89B3A] rounded-2xl border-2 border-[#C89B3A] p-6 sm:p-8 md:p-10 shadow-[0_16px_50px_rgba(224,187,93,0.35)] relative overflow-hidden">
+              {/* Subtle ambient light accents */}
+              <div className="absolute -top-16 -right-16 w-48 h-48 bg-white/30 rounded-full blur-2xl pointer-events-none" />
+              <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-[#014937]/15 rounded-full blur-2xl pointer-events-none" />
 
-              <h3 className="text-xl sm:text-2xl font-heading font-bold text-[#014937] mb-6 flex items-center gap-2">
-                <MessageSquare className="w-6 h-6 text-[#AE7E25]" aria-hidden="true" />
-                <span>Formulario de Consulta Legal</span>
-              </h3>
+              <div className="flex items-center gap-3.5 mb-6 relative z-10">
+                <div className="p-2.5 rounded-xl bg-[#014937] text-[#E0BB5D] shadow-md shrink-0">
+                  <MessageSquare className="w-6 h-6 text-[#E0BB5D]" aria-hidden="true" />
+                </div>
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-heading font-black text-[#014937] leading-tight">
+                    Formulario de Consulta Legal
+                  </h3>
+                  <p className="text-xs font-heading font-semibold text-[#014937]/85">
+                    Atención directa y confidencial por nuestro equipo legal
+                  </p>
+                </div>
+              </div>
 
               {isSubmittedFromUrl ? (
-                <div className="bg-white rounded-lg border-2 border-[#014937] p-6 sm:p-8 space-y-6 text-left animate-in fade-in duration-300">
+                <div className="bg-white rounded-xl border-2 border-[#014937] p-6 sm:p-8 space-y-6 text-left shadow-xl animate-in fade-in duration-300 relative z-10">
                   <div className="flex items-start gap-3 text-[#014937]">
                     <CheckCircle2 className="w-8 h-8 text-[#146A55] shrink-0 mt-0.5" />
                     <div className="space-y-2">
@@ -152,7 +163,7 @@ export const ContactSection: React.FC = () => {
                     <button
                       type="button"
                       onClick={handleResetForm}
-                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#014937] text-white font-heading font-bold text-xs uppercase tracking-wider rounded-md hover:bg-[#146A55] transition-all shadow-md cursor-pointer"
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#014937] text-white font-heading font-bold text-xs uppercase tracking-wider rounded-lg hover:bg-[#146A55] transition-all shadow-md cursor-pointer"
                     >
                       Registrar otra consulta
                     </button>
@@ -162,7 +173,7 @@ export const ContactSection: React.FC = () => {
                 <form
                   action="https://formsubmit.co/sernaestate@gmail.com"
                   method="POST"
-                  className="space-y-5"
+                  className="space-y-5 relative z-10"
                 >
                   {/* FormSubmit Configuration Fields */}
                   <input
@@ -199,8 +210,8 @@ export const ContactSection: React.FC = () => {
 
                   {/* 1. Nombre completo */}
                   <div>
-                    <label htmlFor="fullName" className="block text-xs font-heading font-bold uppercase tracking-wider text-[#014937] mb-1.5">
-                      1. Nombre completo <span className="text-red-500">*</span>
+                    <label htmlFor="fullName" className="block text-xs font-heading font-extrabold uppercase tracking-wider text-[#014937] mb-1.5">
+                      1. Nombre completo <span className="text-red-700">*</span>
                     </label>
                     <input
                       ref={fullNameRef}
@@ -212,14 +223,14 @@ export const ContactSection: React.FC = () => {
                       placeholder="Ej. Juan Pérez Delgado"
                       required
                       autoComplete="name"
-                      className="w-full px-4 py-3 bg-white border border-[#014937]/20 rounded-md text-sm text-[#14201C] focus:outline-none focus:ring-2 focus:ring-[#E0BB5D] focus:border-transparent transition-all"
+                      className="w-full px-4 py-3 bg-white border border-[#014937]/30 rounded-lg text-sm text-[#14201C] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#014937] focus:border-transparent transition-all shadow-xs"
                     />
                   </div>
 
                   {/* 2. Correo electrónico */}
                   <div>
-                    <label htmlFor="email" className="block text-xs font-heading font-bold uppercase tracking-wider text-[#014937] mb-1.5">
-                      2. Correo electrónico <span className="text-red-500">*</span>
+                    <label htmlFor="email" className="block text-xs font-heading font-extrabold uppercase tracking-wider text-[#014937] mb-1.5">
+                      2. Correo electrónico <span className="text-red-700">*</span>
                     </label>
                     <input
                       type="email"
@@ -230,14 +241,14 @@ export const ContactSection: React.FC = () => {
                       placeholder="ejemplo@correo.com"
                       required
                       autoComplete="email"
-                      className="w-full px-4 py-3 bg-white border border-[#014937]/20 rounded-md text-sm text-[#14201C] focus:outline-none focus:ring-2 focus:ring-[#E0BB5D] focus:border-transparent transition-all"
+                      className="w-full px-4 py-3 bg-white border border-[#014937]/30 rounded-lg text-sm text-[#14201C] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#014937] focus:border-transparent transition-all shadow-xs"
                     />
                   </div>
 
                   {/* 3. Número de teléfono / WhatsApp */}
                   <div>
-                    <label htmlFor="phone" className="block text-xs font-heading font-bold uppercase tracking-wider text-[#014937] mb-1.5">
-                      3. Número de teléfono / WhatsApp <span className="text-red-500">*</span>
+                    <label htmlFor="phone" className="block text-xs font-heading font-extrabold uppercase tracking-wider text-[#014937] mb-1.5">
+                      3. Número de teléfono / WhatsApp <span className="text-red-700">*</span>
                     </label>
                     <input
                       type="tel"
@@ -248,14 +259,14 @@ export const ContactSection: React.FC = () => {
                       placeholder="+51 913 511 439"
                       required
                       autoComplete="tel"
-                      className="w-full px-4 py-3 bg-white border border-[#014937]/20 rounded-md text-sm text-[#14201C] focus:outline-none focus:ring-2 focus:ring-[#E0BB5D] focus:border-transparent transition-all"
+                      className="w-full px-4 py-3 bg-white border border-[#014937]/30 rounded-lg text-sm text-[#14201C] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#014937] focus:border-transparent transition-all shadow-xs"
                     />
                   </div>
 
                   {/* 4. Tipo de consulta */}
                   <div>
-                    <label htmlFor="queryType" className="block text-xs font-heading font-bold uppercase tracking-wider text-[#014937] mb-1.5">
-                      4. Tipo de consulta <span className="text-red-500">*</span>
+                    <label htmlFor="queryType" className="block text-xs font-heading font-extrabold uppercase tracking-wider text-[#014937] mb-1.5">
+                      4. Tipo de consulta <span className="text-red-700">*</span>
                     </label>
                     <select
                       id="queryType"
@@ -263,7 +274,7 @@ export const ContactSection: React.FC = () => {
                       value={formData.queryType}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-white border border-[#014937]/20 rounded-md text-sm text-[#14201C] focus:outline-none focus:ring-2 focus:ring-[#E0BB5D] focus:border-transparent transition-all cursor-pointer"
+                      className="w-full px-4 py-3 bg-white border border-[#014937]/30 rounded-lg text-sm text-[#14201C] focus:outline-none focus:ring-2 focus:ring-[#014937] focus:border-transparent transition-all shadow-xs cursor-pointer"
                     >
                       {siteContent.contact.queryTypes.map((q, idx) => (
                         <option key={idx} value={q}>
@@ -275,7 +286,7 @@ export const ContactSection: React.FC = () => {
 
                   {/* 5. Mensaje o descripción breve */}
                   <div>
-                    <label htmlFor="message" className="block text-xs font-heading font-bold uppercase tracking-wider text-[#014937] mb-1.5">
+                    <label htmlFor="message" className="block text-xs font-heading font-extrabold uppercase tracking-wider text-[#014937] mb-1.5">
                       5. Mensaje o descripción breve de la consulta
                     </label>
                     <textarea
@@ -285,19 +296,19 @@ export const ContactSection: React.FC = () => {
                       value={formData.message}
                       onChange={handleChange}
                       placeholder={siteContent.contact.messagePlaceholder}
-                      className="w-full px-4 py-3 bg-white border border-[#014937]/20 rounded-md text-sm text-[#14201C] focus:outline-none focus:ring-2 focus:ring-[#E0BB5D] focus:border-transparent transition-all"
+                      className="w-full px-4 py-3 bg-white border border-[#014937]/30 rounded-lg text-sm text-[#14201C] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#014937] focus:border-transparent transition-all shadow-xs"
                     />
                   </div>
 
                   {/* Legal Notice Box */}
-                  <div className="p-3.5 bg-white rounded-lg border border-[#014937]/15 text-[11px] sm:text-xs text-[#14201C]/80 leading-relaxed space-y-1">
+                  <div className="p-4 bg-white/95 backdrop-blur-xs rounded-xl border border-[#014937]/25 text-[11px] sm:text-xs text-[#14201C] leading-relaxed space-y-1 shadow-xs">
                     <p>
                       <strong>{legalConfig.legalName}</strong>, identificada con RUC {legalConfig.ruc}, utilizará tus datos para recibir, evaluar y responder tu consulta. Conoce cómo tratamos tus datos y cómo ejercer tus derechos en nuestra{' '}
                       <a
                         href={privacyUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[#014937] font-semibold underline hover:text-[#AE7E25] inline-flex items-center gap-0.5"
+                        className="text-[#014937] font-bold underline hover:text-[#146A55] inline-flex items-center gap-0.5"
                         aria-label="Conoce nuestra Política de Privacidad (se abre en una nueva pestaña)"
                       >
                         <span>Política de Privacidad</span>
@@ -317,21 +328,21 @@ export const ContactSection: React.FC = () => {
                         checked={formData.necessaryConsent}
                         onChange={handleChange}
                         required
-                        className="mt-1 h-4 w-4 text-[#014937] border-gray-300 rounded focus:ring-[#E0BB5D] shrink-0 cursor-pointer"
+                        className="mt-1 h-4 w-4 text-[#014937] border-[#014937]/40 rounded focus:ring-[#014937] shrink-0 cursor-pointer"
                       />
-                      <span className="text-xs font-body text-[#14201C]/90 leading-tight group-hover:text-[#014937] transition-colors">
+                      <span className="text-xs font-body font-semibold text-[#014937] leading-tight">
                         He leído la{' '}
                         <a
                           href={privacyUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="underline font-semibold text-[#014937] hover:text-[#AE7E25] inline-flex items-center gap-0.5"
+                          className="underline font-bold text-[#014937] hover:text-[#146A55] inline-flex items-center gap-0.5"
                           aria-label="Abrir Política de Privacidad en una nueva pestaña"
                         >
                           <span>Política de Privacidad</span>
                           <ExternalLink className="w-2.5 h-2.5 inline" />
                         </a>{' '}
-                        y autorizo el tratamiento de mis datos para gestionar y responder esta consulta. <span className="text-red-500 font-bold">*</span>
+                        y autorizo el tratamiento de mis datos para gestionar y responder esta consulta. <span className="text-red-700 font-bold">*</span>
                       </span>
                     </label>
                   </div>
@@ -346,10 +357,10 @@ export const ContactSection: React.FC = () => {
                         value="Autorizado para novedades y campañas"
                         checked={formData.marketingConsent}
                         onChange={handleChange}
-                        className="mt-1 h-4 w-4 text-[#014937] border-gray-300 rounded focus:ring-[#E0BB5D] shrink-0 cursor-pointer"
+                        className="mt-1 h-4 w-4 text-[#014937] border-[#014937]/40 rounded focus:ring-[#014937] shrink-0 cursor-pointer"
                       />
-                      <span className="text-xs font-body text-[#14201C]/80 leading-tight group-hover:text-[#014937] transition-colors">
-                        Quiero recibir novedades, contenido informativo y comunicaciones sobre los servicios y campañas de Serna Estate. <span className="text-xs text-[#14201C]/60 italic">(Opcional)</span>
+                      <span className="text-xs font-body font-medium text-[#014937]/90 leading-tight">
+                        Quiero recibir novedades, contenido informativo y comunicaciones sobre los servicios y campañas de Serna Estate. <span className="text-xs text-[#014937]/70 italic">(Opcional)</span>
                       </span>
                     </label>
                   </div>
@@ -358,7 +369,7 @@ export const ContactSection: React.FC = () => {
                   <div className="pt-3">
                     <button
                       type="submit"
-                      className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#014937] text-white font-heading font-bold text-sm uppercase tracking-wider rounded-md hover:bg-[#146A55] transition-all shadow-md focus:ring-2 focus:ring-[#E0BB5D] cursor-pointer"
+                      className="w-full inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-[#014937] text-white font-heading font-extrabold text-sm uppercase tracking-wider rounded-xl hover:bg-[#146A55] active:scale-[0.99] transition-all shadow-xl hover:shadow-2xl border-2 border-[#014937] focus:ring-2 focus:ring-[#014937] cursor-pointer"
                     >
                       <span>Enviar Consulta Legal</span>
                       <Send className="w-4 h-4 text-[#E0BB5D]" />

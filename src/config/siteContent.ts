@@ -27,11 +27,15 @@ export const siteContent = {
 
   images: {
     logoMain: {
-      url: "https://res.cloudinary.com/rcjz4y4d/image/upload/f_auto,q_auto/v1787067625/LKogoHorizontal_BackLight_v2_wi8bbt.png",
+      url: "https://res.cloudinary.com/rcjz4y4d/image/upload/f_auto,q_auto/v1789926698/SernaEstate_HorizontalLogoTransparent_sf72fq.png",
       alt: "Serna Estate Firma Legal Inmobiliaria S.A.C.",
     },
+    logoFooter: {
+      url: "https://res.cloudinary.com/rcjz4y4d/image/upload/f_auto,q_auto,co_rgb:E0BB5D,e_colorize:100/v1789927230/SernaEstate_HorizontalLogoTransparentLight_1_ado3no.png",
+      alt: "Serna Estate Firma Legal Inmobiliaria",
+    },
     logoSquare: {
-      url: "https://res.cloudinary.com/rcjz4y4d/image/upload/f_auto,q_auto/v1785975788/TransparenteLogoSquare_ezfguz.png",
+      url: "https://res.cloudinary.com/rcjz4y4d/image/upload/f_auto,q_auto/v1789926698/SernaEstate_TransparentLogoSquare_czns6x.png",
       alt: "Serna Estate Isotipo Inmobiliario",
     },
     logoAlt: {

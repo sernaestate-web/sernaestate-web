@@ -5,7 +5,7 @@ import { legalConfig, legalDocList } from '../config/legalConfig';
 import { buildLegalUrl, navigateToLegal } from '../utils/legalNavigation';
 
 export const Footer: React.FC = () => {
-  const footerLogoUrl = "https://res.cloudinary.com/rcjz4y4d/image/upload/f_auto,q_auto/v1787064474/SernaEstate_LogoHorizontal_BkackBackGround_SernaEstateMonochromatyc_d1gu4k.png";
+  const footerLogoUrl = siteContent.images.logoFooter?.url || "https://res.cloudinary.com/rcjz4y4d/image/upload/f_auto,q_auto/v1789927230/SernaEstate_HorizontalLogoTransparentLight_1_ado3no.png";
   const currentYear = new Date().getFullYear();
 
   const handleLegalClick = (e: React.MouseEvent<HTMLAnchorElement>, docId: any) => {
@@ -31,12 +31,12 @@ export const Footer: React.FC = () => {
               className="inline-block group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E0BB5D] rounded-xl transition-all"
               aria-label="Serna Estate - Ir al inicio"
             >
-              {/* Subtle transparent logo representation on dark green background */}
+              {/* Logotipo horizontal dorado con tamaño ampliado sobre fondo verde institucional */}
               <div className="py-1 inline-block">
                 <img
                   src={footerLogoUrl}
                   alt={siteContent.images.logoMain?.alt || "Serna Estate"}
-                  className="h-10 sm:h-12 w-auto object-contain opacity-95 hover:opacity-100 group-hover:scale-[1.02] transition-all"
+                  className="h-14 sm:h-18 md:h-20 lg:h-24 w-auto object-contain transition-all drop-shadow-[0_4px_16px_rgba(224,187,93,0.3)] group-hover:scale-[1.02] group-hover:drop-shadow-[0_6px_22px_rgba(224,187,93,0.45)]"
                   loading="lazy"
                 />
               </div>
