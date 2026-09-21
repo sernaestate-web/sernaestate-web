@@ -27,7 +27,7 @@ export const siteContent = {
 
   images: {
     logoMain: {
-      url: "https://res.cloudinary.com/rcjz4y4d/image/upload/f_auto,q_auto/v1789926698/SernaEstate_HorizontalLogoTransparent_sf72fq.png",
+      url: "https://res.cloudinary.com/rcjz4y4d/image/upload/f_auto,q_auto,e_trim/v1789926698/SernaEstate_HorizontalLogoTransparent_sf72fq.png",
       alt: "Serna Estate Firma Legal Inmobiliaria S.A.C.",
     },
     logoFooter: {

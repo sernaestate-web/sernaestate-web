@@ -97,18 +97,18 @@ export const Header: React.FC = () => {
       <div
         className={`transition-all duration-300 ${
           isScrolled
-            ? 'bg-white/95 backdrop-blur-md shadow-[0_4px_20px_rgba(1,73,55,0.06)] border-b border-[#014937]/10 py-2 sm:py-2.5'
-            : 'bg-white/90 backdrop-blur-sm border-b border-[#014937]/5 py-2.5 sm:py-3.5'
+            ? 'bg-white/95 backdrop-blur-md shadow-[0_4px_20px_rgba(1,73,55,0.06)] border-b border-[#014937]/10 py-1.5 sm:py-2'
+            : 'bg-white/90 backdrop-blur-sm border-b border-[#014937]/5 py-2 sm:py-2.5'
         }`}
       >
         <div className="max-w-[1440px] mx-auto px-3 sm:px-6 lg:px-8 xl:px-10">
           <div className="flex items-center justify-between gap-2 sm:gap-4 lg:gap-6">
             
-            {/* Logo Principal con presencia ampliada y destacada */}
+            {/* Logo Principal con presencia destacada que aprovecha toda la altura del navbar */}
             <a
               href="#inicio"
               onClick={() => handleNavLinkClick('inicio')}
-              className="flex items-center shrink min-w-0 max-w-[62%] sm:max-w-none group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E0BB5D] rounded-xl p-0.5 sm:p-1 transition-all"
+              className="flex items-center self-stretch shrink min-w-0 max-w-[62%] sm:max-w-none group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E0BB5D] rounded-xl transition-all"
               aria-label="Serna Estate - Ir al inicio"
             >
               <img
@@ -116,8 +116,8 @@ export const Header: React.FC = () => {
                 alt={siteContent.images.logoMain.alt}
                 className={`w-auto object-contain transition-all duration-300 ${
                   isScrolled
-                    ? 'h-9.5 sm:h-12 md:h-15 lg:h-16 max-h-9.5 sm:max-h-12 md:max-h-15 lg:max-h-16'
-                    : 'h-11 sm:h-15 md:h-18 lg:h-20 xl:h-22 max-h-11 sm:max-h-15 md:max-h-18 lg:max-h-20 xl:max-h-22'
+                    ? 'h-11 sm:h-13 md:h-15 lg:h-16 xl:h-17 max-h-11 sm:max-h-13 md:max-h-15 lg:max-h-16 xl:max-h-17'
+                    : 'h-13 sm:h-16 md:h-19 lg:h-22 xl:h-24 max-h-13 sm:max-h-16 md:max-h-19 lg:max-h-22 xl:max-h-24'
                 } group-hover:scale-[1.01]`}
                 loading="eager"
               />
