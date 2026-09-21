@@ -58,7 +58,7 @@ export const siteContent = {
 
   navigation: [
     { label: "Inicio", href: "#inicio" },
-    { label: "Por Qué Elegirnos", href: "#por-que-elegirnos" },
+    { label: "Por qué elegirnos", href: "#por-que-elegirnos" },
     { label: "Quiénes Somos", href: "#la-firma" },
     { label: "Servicios", href: "#servicios" },
     { label: "Casos de Éxito", href: "#casos" },
